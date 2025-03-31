@@ -10,16 +10,16 @@ export const prerender = true;
 
 export async function getStaticPaths() {
     const posts = await getPosts()
+
     return posts.map((post) => ({
         params: {slug: post.slug.current},
     }))
 }
 
-type Params = InferGetStaticParamsType<typeof getStaticPaths>
-const { slug } = Astro.params as Params
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
 
-const post = await getPost(slug)
-
+const post = await getPost(slug);
 ---
 
 <Layout title={post.title!}>
@@ -36,14 +36,12 @@ const post = await getPost(slug)
         )
       }
       <div class="post__container">
-        <h1 class="post__title">{post.title}</h1>
-        <!-- <p class="post__excerpt">{post.excerpt}</p> -->
+        <h2 class="post__title">{post.title}</h1>
+        <p class="post__excerpt">{post.excerpt}</p>
         <p class="post__date">
           {formatDate(post._createdAt)}
         </p>
         <div class="post__content">
-
-          <h1>Hola Mundo</h1>
           <PortableText value={post.body} />
         </div>
       </div>

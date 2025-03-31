@@ -12,7 +12,7 @@ export default defineConfig({
     sanity({
       projectId: 'bn4rvp7h',
       dataset: 'production',
-      useCdn: true, // Si es estático va false. Si es dinámico va true 
+      useCdn: false, // Si es estático va false. Si es dinámico va true 
       apiVersion: "2025-03-29", 
       studioBasePath: '/studio' // De esta manera integramos Sanity Studio a una ruta de Astro
     }),
