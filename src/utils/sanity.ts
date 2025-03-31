@@ -8,8 +8,10 @@ export interface Post {
     _createdAt: string;
     title?: string;
     slug: Slug;
+    author: string;
     excerpt?: string;
     mainImage?: ImageAsset & { alt?: string };
+    categories: string[];
     body: PortableTextBlock[]
 
 }

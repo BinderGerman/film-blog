@@ -1,6 +1,6 @@
 import {defineField, defineType} from 'sanity'
 
-export default defineType({
+export const postType = defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
@@ -21,6 +21,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: "author",
+      type: "reference",
+      to: { type: "author" },
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
@@ -33,6 +38,18 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative Text",
+        },
+      ],
+    }),
+    defineField({
+      name: "categories",
+      type: "array",
+      of: [{ type: "reference", to: { type: "category" } }],
     }),
     defineField({
       name: 'body',
