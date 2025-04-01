@@ -1,13 +1,21 @@
 ---
 import Card from "../components/Card.astro";
+import Header from "../components/Header"
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/sanity";
 
 const posts = await getPosts();
+
 ---
 
 <Layout title="Welcome to Astro.">
   <section>
+    <Header client:only="react"/>
+  </section>
+  <br/>
+  <section>
     {posts.map((post) => <Card post={post} />)}
   </section>
+  
 </Layout>
+

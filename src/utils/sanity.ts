@@ -31,3 +31,10 @@ export async function getPost(slug: string): Promise<Post> {
     )
 }
 
+export async function getPostsByCategory(categoryName: string): Promise<Post[]> {
+    return await sanityClient.fetch(
+        groq`*[_type == "post" && $categoryName in categories[]->title] | order(_createdAt desc)`,
+        { categoryName }
+    );
+}
+
