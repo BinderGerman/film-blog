@@ -15,6 +15,7 @@
     "@sanity/astro": "^3.2.6",
     "@sanity/client": "^6.28.4",
     "@sanity/image-url": "^1.1.0",
+    "@tailwindcss/vite": "^4.1.1",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "astro": "^5.5.5",
@@ -26,6 +27,7 @@
     "react-router-dom": "^6.30.0",
     "sanity": "^3.81.0",
     "styled-components": "^6.1.16",
-    "swiper": "^11.2.6"
+    "swiper": "^11.2.6",
+    "tailwindcss": "^4.1.1"
   }
 }

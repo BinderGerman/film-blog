@@ -3,6 +3,7 @@ import Card from "../components/Card.astro";
 import Header from "../components/Header"
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/sanity";
+import "../styles/global.css";
 
 const posts = await getPosts();
 
@@ -16,6 +17,5 @@ const posts = await getPosts();
   <section>
     {posts.map((post) => <Card post={post} />)}
   </section>
-  
 </Layout>
 
