@@ -4,15 +4,14 @@ import Header from "../components/Header"
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/sanity";
 import "../styles/global.css";
+import SliderSection from "../sections/SliderSection.astro";
 
 const posts = await getPosts();
 
 ---
 
 <Layout title="Welcome to Astro.">
-  <section>
-    <Header client:only="react"/>
-  </section>
+  <SliderSection />
   <br/>
   <section>
     {posts.map((post) => <Card post={post} />)}
