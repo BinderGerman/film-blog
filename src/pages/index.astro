@@ -25,7 +25,7 @@ const categoriesWithPosts = await getPostsGroupedByCategory();
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {category.posts.map((post) => (
             <article class="border rounded shadow hover:shadow-md transition bg-primary ">
-              <a href={`/blog/${post.slug.current}`}>
+              <a href={`/post/${post.slug.current}`}>
                 {post.mainImage ? (
                   <img
                     class="card__cover"
