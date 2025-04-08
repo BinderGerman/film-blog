@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import type { Post } from "../utils/sanity";
+import type { Post } from "../types/post";
 import { getPostsByCategory } from "../utils/sanity";
 import { urlFor } from "../utils/image";
 
-import { Pagination, Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 
 interface SliderProps {
@@ -38,11 +40,14 @@ export const Slider = ({ category }: SliderProps) => {
   return (
     <>
       <Swiper
-        speed={600}
+        /*autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}*/
         effect={"fade"}
         pagination={{ clickable: true }}
         navigation={true}
-        modules={[Pagination, Navigation]}
+        modules={[Autoplay, EffectFade, Navigation, Pagination]}
         className="mySwiper"
       >
         {featuredPosts.map((post) => (
@@ -51,20 +56,20 @@ export const Slider = ({ category }: SliderProps) => {
               href={`/post/${post.slug.current}`}
               style={{ textDecoration: "none" }}
             >
-              <div className="relative h-[400px]">
+              <div className="relative h-[500px] mt-8">
                 {post.mainImage && (
                   <div
-                    className="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center"
+                    className="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center px-4"
                     style={{
                       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${urlFor(post.mainImage).url()})`,
                     }}
                   />
                 )}
-                <div className="absolute top-[65%] left-[2%] text-principal text-4xl font-bold">
+                <div className="absolute top-[65%] left-[2%] text-principal text-4xl text-highlight-white font-bold">
                   {post.title}
                 </div>
 
-                <div className="absolute top-[75%] left-[2%] text-principal text-2xl font-light">
+                <div className="absolute top-[78%] left-[2%] text-principal text-2xl text-highlight-white font-light">
                   {post.excerpt}
                 </div>
               </div>

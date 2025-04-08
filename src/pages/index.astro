@@ -1,20 +1,51 @@
 ---
 import Card from "../components/Card.astro";
-import Header from "../components/Header"
 import Layout from "../layouts/Layout.astro";
-import { getPosts } from "../utils/sanity";
+import { getPosts, getPostsGroupedByCategory } from "../utils/sanity";
 import "../styles/global.css";
 import SliderSection from "../sections/SliderSection.astro";
+import { urlFor } from "../utils/image";
 
 const posts = await getPosts();
-
+const categoriesWithPosts = await getPostsGroupedByCategory();
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Blog de Roman">
   <SliderSection />
-  <br/>
-  <section>
-    {posts.map((post) => <Card post={post} />)}
-  </section>
+  <br />
+  {
+    categoriesWithPosts.map((category) => (
+      <section>
+        <h2 class="text-3xl text-primary font-bold pb-2  mt-16">
+          {category.title}
+        </h2>
+        <div class="w-full h-1  bg-highlight-red" />
+        <div class="w-full h-1  bg-highlight-white" />
+        <div class="w-full mb-4 h-1  bg-highlight-gold" />
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          {category.posts.map((post) => (
+            <article class="border rounded shadow hover:shadow-md transition bg-primary ">
+              <a href={`/blog/${post.slug.current}`}>
+                {post.mainImage ? (
+                  <img
+                    class="card__cover"
+                    src={urlFor(post.mainImage).width(500).height(300).url()}
+                    alt={post.mainImage.alt || ""}
+                  />
+                ) : (
+                  <div class="card__cover--none" />
+                )}
+                <div class="p-4">
+                  <h3 class="text-lg text-highlight-white font-semibold pb-4 pt-2">
+                    {post.title}
+                  </h3>
+                  <p class="text-sm text-highlight-gold pb-2">{post.excerpt}</p>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))
+  }
 </Layout>
-
