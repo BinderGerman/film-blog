@@ -6,3 +6,20 @@
   --color-highlight-gold: #B8860B;
   --color-highlight-white: #ffffff;
 }
+
+/* Estilos para la paginación y navegación del Slider de Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #ffffff !important;
+  font-weight: bold !important;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff !important;
+}

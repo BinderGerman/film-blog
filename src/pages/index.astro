@@ -5,6 +5,7 @@ import { getPosts, getPostsGroupedByCategory } from "../utils/sanity";
 import "../styles/global.css";
 import SliderSection from "../sections/SliderSection.astro";
 import { urlFor } from "../utils/image";
+import { PlusCircle } from "@lucide/astro";
 
 const posts = await getPosts();
 const categoriesWithPosts = await getPostsGroupedByCategory();
@@ -15,25 +16,29 @@ const categoriesWithPosts = await getPostsGroupedByCategory();
   <br />
   {
     categoriesWithPosts.map((category) => (
-      <section>
-        <h2 class="text-3xl text-primary font-bold pb-2  mt-16">
-          {category.title}
-        </h2>
-        <div class="w-full h-1  bg-highlight-red" />
-        <div class="w-full h-1  bg-highlight-white" />
-        <div class="w-full mb-4 h-1  bg-highlight-gold" />
+      <section class="px-4 lg:px-2 xl:px-0 ">
+        <a class="flex items-center gap-2" href="#">
+          <h2 class="text-3xl text-primary font-bold pb-2 mt-16">
+            {category.title}
+          </h2>
+          <PlusCircle class="mt-16 w-6 h-6 text-primary" />
+        </a>
+
+        <div class="w-full h-1 bg-highlight-gold" />
+        <div class="w-full h-1 bg-highlight-white" />
+        <div class="w-full mb-4 h-1 bg-highlight-red" />
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {category.posts.map((post) => (
             <article class="border rounded shadow hover:shadow-md transition bg-primary ">
               <a href={`/post/${post.slug.current}`}>
                 {post.mainImage ? (
                   <img
-                    class="card__cover"
+                    class=""
                     src={urlFor(post.mainImage).width(500).height(300).url()}
                     alt={post.mainImage.alt || ""}
                   />
                 ) : (
-                  <div class="card__cover--none" />
+                  <div class="" />
                 )}
                 <div class="p-4">
                   <h3 class="text-lg text-highlight-white font-semibold pb-4 pt-2">

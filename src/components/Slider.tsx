@@ -69,7 +69,7 @@ export const Slider = ({ category }: SliderProps) => {
                   {post.title}
                 </div>
 
-                <div className="absolute top-[78%] left-[2%] text-principal text-2xl text-highlight-white font-light">
+                <div className="absolute top-[78%] left-[2%] text-principal text-2xl text-highlight-white font-light hidden md:block">
                   {post.excerpt}
                 </div>
               </div>
