@@ -40,10 +40,10 @@ export const Slider = ({ category }: SliderProps) => {
   return (
     <>
       <Swiper
-        /*autoplay={{
+        autoplay={{
           delay: 3000,
           disableOnInteraction: false,
-        }}*/
+        }}
         effect={"fade"}
         pagination={{ clickable: true }}
         navigation={true}
