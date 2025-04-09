@@ -47,7 +47,7 @@ export async function getPostsGroupedByCategory(): Promise<CategoryWithPosts[]> 
       _type == "category" && 
       title != "DESTACADOS" && 
       count(*[_type == "post" && references(^._id)]) > 0
-    ]{
+    ] | order(order asc){
       _id,
       title,
       slug,

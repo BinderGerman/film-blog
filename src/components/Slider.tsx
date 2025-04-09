@@ -56,7 +56,7 @@ export const Slider = ({ category }: SliderProps) => {
               href={`/post/${post.slug.current}`}
               style={{ textDecoration: "none" }}
             >
-              <div className="relative h-[500px] mt-8">
+              <div className="relative h-[600px] mt-8">
                 {post.mainImage && (
                   <div
                     className="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center px-4"
