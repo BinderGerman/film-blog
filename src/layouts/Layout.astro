@@ -1,6 +1,6 @@
 ---
 // https://docs.astro.build/en/guides/view-transitions/
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import HeaderSection from "../sections/HeaderSection.astro";
 
@@ -17,11 +17,33 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
-    
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    
-    
+    <meta
+      name="description"
+      content="Cine, narrativa y ensayo en un sitio artesanal - Por Roman Ganuza"
+    />
+
+    <meta property="og:url" content="https://www.film-blog.pages.dev" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Los olvidos de Cronos" />
+    <meta
+      property="og:description"
+      content="Cine, narrativa y ensayo en un sitio artesanal - Por Roman Ganuza"
+    />
+    <meta property="og:image" content="https://www.film-blog.pages.dev/og.jpg" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Los olvidos de Cronos" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:creator" content="" />
+    <meta name="twitter:title" content="Los olvidos de Cronos" />
+    <meta
+      name="twitter:description"
+      content="Cine, narrativa y ensayo en un sitio artesanal - Por Roman Ganuza"
+    />
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,8 +53,7 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
 
-    
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="bg-highlight-white">
     <HeaderSection />

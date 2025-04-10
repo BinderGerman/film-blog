@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro"
 import { formatDate } from "../../utils";
 import { urlFor } from "../../utils/image";
 import { getPost, getPosts } from "../../utils/sanity";
+import ShareButtons from "../../components/ShareButtons.astro";
 
 export const prerender = true;
 
@@ -20,6 +21,10 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
 const post = await getPost(slug);
+
+const shareUrl = `https://film-blog.pages.dev/post/${post.slug}`;
+const shareTitle = post.title;
+
 ---
 
 <Layout title={post.title!}>
@@ -45,9 +50,11 @@ const post = await getPost(slug);
       <p class="font-sans font-semibold text-sm md:text-lg leading-snug mt-4 md:mt-0">
         {formatDate(post._createdAt)}
       </p>
+      <ShareButtons url={shareUrl} title={shareTitle} />
       <div class="font-serif font-normal text-lg md:text-xl leading-relaxed tracking-tight mt-10 md:mt-16 prose prose-a:text-blue-600 prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6">
         <PortableText value={post.body} />
       </div>
+      <ShareButtons url={shareUrl} title={shareTitle} />
     </div>
   </section>
 </Layout>

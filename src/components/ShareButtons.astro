@@ -1,0 +1,73 @@
+---
+const { url, title } = Astro.props;
+
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+---
+
+<div class="mt-6">
+    <h4 class="mb-1">Compartir en:</h4>
+    <div class="flex gap-3">
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-0"
+          aria-label="Compartir en Facebook"
+        >
+          <img class="w-6 h-6" src="/facebook.svg" alt="Facebook" />
+        </a>
+      
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-0"
+          aria-label="Compartir en X"
+        >
+          <img class="w-6 h-6" src="/twitter-alt-circle.svg" alt="Twitter" />
+        </a>
+      
+        <a
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-0"
+          aria-label="Compartir en LinkedIn"
+        >
+          <img class="w-6 h-6" src="/linkedin.svg" alt="Linkedin" />
+        </a>
+      
+        <a
+          href={`https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-0"
+          aria-label="Compartir en WhatsApp"
+        >
+          <img class="w-6 h-6" src="/whatsapp.svg" alt="WhatsApp" />
+        </a>
+      
+        <a
+          href={`https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-0"
+          aria-label="Compartir en Reddit"
+        >
+          <img class="w-6 h-6" src="/reddit.svg" alt="Reddit" />
+        </a>
+      
+        <a
+          href={`mailto:?subject=${encodedTitle}&body=${encodedTitle}%0A${encodedUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-0"
+          aria-label="Compartir por correo"
+        >
+          <img class="w-6 h-6" src="/sobre.svg" alt="Email" />
+        </a>
+      </div>
+      
+
+</div>
