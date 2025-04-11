@@ -29,7 +29,7 @@ const categories = await getCategories()
               categories.map((category) => (
                 <li class="w-full">
                   <a
-                    href="#"
+                    href={`/categoria/${category.slug.current}`}
                     class="block w-full whitespace-nowrap text-primary hover:text-highlight-red"
                   >
                     {category.title}

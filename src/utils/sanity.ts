@@ -35,6 +35,7 @@ export async function getCategories(): Promise<Category[]> {
     groq`*[_type == "category" && title != "DESTACADOS"]{
         _id,
         title,
+        slug,
         description
       }`
   );
@@ -62,3 +63,34 @@ export async function getPostsGroupedByCategory(): Promise<CategoryWithPosts[]> 
     }`
   );
 }
+
+export async function getPostsByCategorySlug(slug: string, page: number, pageSize = 20): Promise<Post[]> {
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+
+  return await sanityClient.fetch(
+    `*[
+      _type == "post" && 
+      references(*[_type == "category" && slug.current == $slug]._id)
+    ] | order(_createdAt desc)[$start...$end]{
+      _id,
+      title,
+      slug,
+      excerpt,
+      publishedAt,
+      mainImage
+    }`,
+    { slug, start, end }
+  );
+}
+
+export async function getTotalPostsByCategory(slug: string): Promise<number> {
+  return await sanityClient.fetch(
+    `count(*[
+      _type == "post" &&
+      references(*[_type == "category" && slug.current == $slug]._id)
+    ])`,
+    { slug }
+  );
+}
+
