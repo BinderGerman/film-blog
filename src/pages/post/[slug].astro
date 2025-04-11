@@ -27,7 +27,11 @@ const shareTitle = post.title;
 
 ---
 
-<Layout title={post.title!}>
+<Layout 
+  title={post.title!} 
+  description={post.excerpt}
+  image={post.mainImage ? urlFor(post.mainImage).url() : undefined}
+>
   <section class="flex flex-col max-w-[750px] px-4 m-auto my-24 md:my-16">
     {
       post.mainImage ? (
