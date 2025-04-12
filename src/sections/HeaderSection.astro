@@ -50,25 +50,10 @@ const categories = await getCategories()
     </div>
   </div>
   
+  <div class="w-full h-2 bg-highlight-gold" />
   <div id="header-lines" class="transition-all duration-300">
-    <div class="w-full h-2 bg-highlight-gold" />
     <div class="w-full h-1 bg-highlight-white" />
     <div class="w-full h-1 bg-highlight-red" />
+    <div class="w-full h-1  bg-highlight-white" />
   </div>
-  <div class="w-full h-1  bg-highlight-white" />
 </header>
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const headerLines = document.getElementById('header-lines');
-
-    if (!headerLines) return;
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        headerLines.classList.add('opacity-0', 'h-0', 'overflow-hidden');
-      } else {
-        headerLines.classList.remove('opacity-0', 'h-0', 'overflow-hidden');
-      }
-    });
-  });
-</script>

@@ -10,5 +10,6 @@ export interface Post {
   excerpt?: string;
   mainImage?: ImageAsset & { alt?: string };
   categories: string[];
+  tags?: string[]
   body: PortableTextBlock[];
 }
