@@ -1,33 +1,19 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+"use client";
 
-export default function MobileMenu() {
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+
+interface Category {
+  title: string;
+  slug: { current: string };
+}
+
+interface MobileMenuProps {
+  categories: Category[];
+}
+
+export default function MobileMenu({ categories }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
-  let lastScroll = 0;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      const header = document.getElementById('site-header');
-
-      if (!header) return;
-
-      if (currentScroll > lastScroll && currentScroll > 50) {
-        header.style.transform = 'translateY(-100%)';
-        setShowHeader(false);
-      } else {
-        header.style.transform = 'translateY(0)';
-        setShowHeader(true);
-      }
-
-      lastScroll = currentScroll;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
@@ -36,25 +22,55 @@ export default function MobileMenu() {
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
       >
-        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        {isOpen ? (
+          <X className="w-6 h-6 font-semibold text-primary" />
+        ) : (
+          <Menu className="w-6 h-6 font-semibold text-highlight-white" />
+        )}
       </button>
 
-      {isOpen && (
-        <div className="fixed inset-0 bg-white z-40 flex flex-col p-6 space-y-4 text-lg">
-          <button
-            className="self-end"
+      <div
+        className={`
+          fixed top-0 left-0 z-40 flex flex-col p-6 space-y-4 text-lg bg-white
+          h-screen w-full
+          transition-transform duration-300 ease-in-out
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+      >
+        <button
+          className="self-end"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close menu"
+        >
+          <X className="w-6 h-6" />
+        </button>
+
+        <span className="text-2xl font-semibold text-primary">Categorías</span>
+        {categories.map((category) => (
+          <a
+            className="pl-4 text-xl text-primary hover:text-highlight-gold transition-all duration-200"
+            key={category.slug.current}
+            href={`/categoria/${category.slug.current}`}
             onClick={() => setIsOpen(false)}
-            aria-label="Close menu"
           >
-            <X className="w-6 h-6" />
-          </button>
-          <a href="/categoria/tecnologia" onClick={() => setIsOpen(false)}>Tecnología</a>
-          <a href="/categoria/vida" onClick={() => setIsOpen(false)}>Vida</a>
-          <a href="/categoria/opinion" onClick={() => setIsOpen(false)}>Opinión</a>
-          <a href="/contacto" onClick={() => setIsOpen(false)}>Contacto</a>
-          <a href="/sobre-mi" onClick={() => setIsOpen(false)}>Sobre mí</a>
-        </div>
-      )}
+            {category.title}
+          </a>
+        ))}
+        <a
+          className="text-2xl font-semibold text-primary hover:text-highlight-gold transition-all duration-200"
+          href="/contacto"
+          onClick={() => setIsOpen(false)}
+        >
+          Contacto
+        </a>
+        <a
+          className="text-2xl font-semibold text-primary hover:text-highlight-gold transition-all duration-200"
+          href="/sobre-mi"
+          onClick={() => setIsOpen(false)}
+        >
+          Sobre mí
+        </a>
+      </div>
     </>
   );
 }

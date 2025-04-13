@@ -25,12 +25,10 @@ export const Slider = ({ category }: SliderProps) => {
         const selectedCategory = category || "DESTACADOS";
         const posts = await getPostsByCategory(selectedCategory);
         setFeaturedPosts(posts);
-        console.log("hola");
       } catch (error) {
         console.error("Error fetching posts", error);
       } finally {
         setLoading(false);
-        console.log("chau");
       }
     }
 
@@ -65,11 +63,11 @@ export const Slider = ({ category }: SliderProps) => {
                     }}
                   />
                 )}
-                <div className="absolute top-[65%] left-[2%] text-principal text-4xl text-highlight-white font-bold">
+                <div className="absolute top-[80%] md:top-[65%] left-[2%] text-4xl text-highlight-white font-bold">
                   {post.title}
                 </div>
 
-                <div className="absolute top-[78%] left-[2%] text-principal text-2xl text-highlight-white font-light hidden md:block">
+                <div className="absolute top-[78%] left-[2%] text-2xl text-highlight-white font-light hidden md:block">
                   {post.excerpt}
                 </div>
               </div>

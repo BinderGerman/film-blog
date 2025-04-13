@@ -1,59 +1,74 @@
 ---
 import MobileMenu from '../components/MobileMenu';
+import ScrollHideHeader from '../components/ScrollHideHeader';
+import DesktopCategoriesMenu from '../components/DesktopCategoriesMenu';
 import { getCategories } from '../utils/sanity';
 
-const categories = await getCategories()
+const categories = await getCategories();
 ---
 
+<ScrollHideHeader client:load />
 
-<header class="fixed top-0 left-0 w-full z-50 bg-primary  shadow transition-transform duration-300" id="site-header">
-  
-  <div class="container mx-auto flex items-center justify-between px-4 py-4
-   bg-primary">
-    <!-- Nombre del sitio -->
-     <a href="/">
+<header class="fixed top-0 left-0 w-full z-50 bg-primary shadow transition-transform duration-300" id="site-header">
+  <div class="container mx-auto flex items-center justify-between px-4 py-4 bg-primary">
+    <a href="/">
       <h1 class="text-2xl font-bold text-highlight-gold">Los olvidos de Cronos</h1>
-     </a>
+    </a>
+
     <!-- Menú Desktop -->
     <nav class="hidden md:flex space-x-6 items-center text-highlight-white">
-      <div class="relative group">
-        <button class="flex items-center gap-1 hover:text-highlight-red">
-          Categorías
-          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div class="absolute left-0 top-full bg-white shadow-md mt-2 hidden group-hover:block w-80">
-          <ul class="flex flex-col p-2 space-y-2">
-            {
-              categories.map((category) => (
-                <li class="w-full">
-                  <a
-                    href={`/categoria/${category.slug.current}`}
-                    class="block w-full whitespace-nowrap text-primary hover:text-highlight-red"
-                  >
-                    {category.title}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
+      <DesktopCategoriesMenu client:load categories={categories} />
       <a href="/contacto" class="hover:text-highlight-red">Contacto</a>
       <a href="/sobre-mi" class="hover:text-highlight-red">Sobre mí</a>
     </nav>
 
     <!-- Menú Mobile -->
     <div class="md:hidden">
-      <MobileMenu />
+      <MobileMenu client:load categories={categories} />
     </div>
   </div>
-  
+
   <div class="w-full h-2 bg-highlight-gold" />
   <div id="header-lines" class="transition-all duration-300">
     <div class="w-full h-1 bg-highlight-white" />
     <div class="w-full h-1 bg-highlight-red" />
-    <div class="w-full h-1  bg-highlight-white" />
+    <div class="w-full h-1 bg-highlight-white" />
+  </div>
+</header>
+---
+import MobileMenu from '../components/MobileMenu';
+import ScrollHideHeader from '../components/ScrollHideHeader';
+import DesktopCategoriesMenu from '../components/DesktopCategoriesMenu';
+import { getCategories } from '../utils/sanity';
+
+const categories = await getCategories();
+---
+
+<ScrollHideHeader client:load />
+
+<header class="fixed top-0 left-0 w-full z-50 bg-primary shadow transition-transform duration-300" id="site-header">
+  <div class="container mx-auto flex items-center justify-between px-4 py-4 bg-primary">
+    <a href="/">
+      <h1 class="text-2xl font-bold text-highlight-gold">Los olvidos de Cronos</h1>
+    </a>
+
+    <!-- Menú Desktop -->
+    <nav class="hidden md:flex space-x-6 items-center text-highlight-white">
+      <DesktopCategoriesMenu client:load categories={categories} />
+      <a href="/contacto" class="hover:text-highlight-gold">Contacto</a>
+      <a href="/sobre-mi" class="hover:text-highlight-gold">Sobre mí</a>
+    </nav>
+
+    <!-- Menú Mobile -->
+    <div class="md:hidden">
+      <MobileMenu client:load categories={categories} />
+    </div>
+  </div>
+
+  <div class="w-full h-2 bg-highlight-gold" />
+  <div id="header-lines" class="transition-all duration-300">
+    <div class="w-full h-1 bg-highlight-white" />
+    <div class="w-full h-1 bg-highlight-red" />
+    <div class="w-full h-1 bg-highlight-white" />
   </div>
 </header>
