@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { Category } from "../types/category";
+import type { Category } from "../../types/category";
 
 interface Props {
   categories: Category[];

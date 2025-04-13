@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import type { Post } from "../types/post";
-import { getPostsByCategory } from "../utils/sanity";
-import { urlFor } from "../utils/image";
-
 import { Autoplay, EffectFade, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import { getPostsByCategory } from "../utils/sanity";
+import { urlFor } from "../utils/image";
+import type { Post } from "../types/post";
+
 import "swiper/css";
 import "swiper/css/effect-fade";
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface SliderProps {
   category?: string;

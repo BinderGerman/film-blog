@@ -1,16 +1,17 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
 import {
   getPostsByCategorySlug,
   getTotalPostsByCategory,
 } from "../../../utils/sanity";
 import { urlFor } from "../../../utils/image";
+
+import Layout from "../../../layouts/Layout.astro";
+
 const { slug, page } = Astro.params;
 
 const currentPage = page?.[0] ? parseInt(page[0]) : 1;
 const pageSize = 20;
 
-// Total de posts en la categoría
 const totalPosts = await getTotalPostsByCategory(slug as string);
 const totalPages = Math.ceil(totalPosts / pageSize);
 
@@ -24,30 +25,33 @@ const posts = await getPostsByCategorySlug(
 <Layout title="Página de Categoría">
   <section class="mt-32">
     <h1>Artículos en: {slug}</h1>
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        {posts.map((post) => (
-            <article class="border rounded shadow hover:shadow-md transition bg-primary ">
-              <a href={`/post/${post.slug.current}`}>
-                {post.mainImage ? (
-                  <img
-                    class=""
-                    src={urlFor(post.mainImage).width(500).height(300).url()}
-                    alt={post.mainImage.alt || ""}
-                  />
-                ) : (
-                  <div class="" />
-                )}
-                <div class="p-4">
-                  <h3 class="text-lg text-highlight-white font-semibold pb-4 pt-2">
-                    {post.title}
-                  </h3>
-                  <p class="text-sm text-highlight-gold pb-2">{post.excerpt}</p>
-                </div>
-              </a>
-            </article>
-          ))}
+    <div
+      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+    >
+      {
+        posts.map((post) => (
+          <article class="border rounded shadow hover:shadow-md transition bg-primary ">
+            <a href={`/post/${post.slug.current}`}>
+              {post.mainImage ? (
+                <img
+                  class=""
+                  src={urlFor(post.mainImage).width(500).height(300).url()}
+                  alt={post.mainImage.alt || ""}
+                />
+              ) : (
+                <div class="" />
+              )}
+              <div class="p-4">
+                <h3 class="text-lg text-highlight-white font-semibold pb-4 pt-2">
+                  {post.title}
+                </h3>
+                <p class="text-sm text-highlight-gold pb-2">{post.excerpt}</p>
+              </div>
+            </a>
+          </article>
+        ))
+      }
     </div>
-    
 
     {
       totalPages > 1 && (

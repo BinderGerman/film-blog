@@ -1,20 +1,21 @@
 ---
 import type { InferGetStaticParamsType } from "astro";
-import { PortableText } from "astro-portabletext"
-import Layout from "../../layouts/Layout.astro"
+import { PortableText } from "astro-portabletext";
+import { getPost, getPosts } from "../../utils/sanity";
 import { formatDate } from "../../utils";
 import { urlFor } from "../../utils/image";
-import { getPost, getPosts } from "../../utils/sanity";
+
+import Layout from "../../layouts/Layout.astro";
 import ShareButtons from "../../components/ShareButtons.astro";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-    const posts = await getPosts()
+  const posts = await getPosts();
 
-    return posts.map((post) => ({
-        params: {slug: post.slug.current},
-    }))
+  return posts.map((post) => ({
+    params: { slug: post.slug.current },
+  }));
 }
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
@@ -24,11 +25,10 @@ const post = await getPost(slug);
 
 const shareUrl = `https://film-blog.pages.dev/post/${post.slug}`;
 const shareTitle = post.title;
-
 ---
 
-<Layout 
-  title={post.title!} 
+<Layout
+  title={post.title!}
   description={post.excerpt}
   image={post.mainImage ? urlFor(post.mainImage).url() : undefined}
 >
@@ -45,29 +45,43 @@ const shareTitle = post.title;
       )
     }
     <div class="px-4">
-      <h2 class="font-sans text-3xl md:text-5xl leading-tight md:leading-tight font-extrabold my-6 md:mt-16 md:mb-0 tracking-tight">
+      <h2
+        class="font-sans text-3xl md:text-5xl leading-tight md:leading-tight font-extrabold my-6 md:mt-16 md:mb-0 tracking-tight"
+      >
         {post.title}
       </h2>
-      <p class="font-serif text-xl md:text-2xl leading-relaxed font-normal mt-0 mb-6">
+      <p
+        class="font-serif text-xl md:text-2xl leading-relaxed font-normal mt-0 mb-6"
+      >
         {post.excerpt}
       </p>
-      <p class="font-sans font-semibold text-sm md:text-lg leading-snug mt-4 md:mt-0">
+      <p
+        class="font-sans font-semibold text-sm md:text-lg leading-snug mt-4 md:mt-0"
+      >
         {formatDate(post._createdAt)}
       </p>
       <ShareButtons url={shareUrl} title={shareTitle} />
-      <div class="font-serif font-normal text-lg md:text-xl leading-relaxed tracking-tight mt-10 md:mt-16 prose prose-a:text-blue-600 prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6">
+      <div
+        class="font-serif font-normal text-lg md:text-xl leading-relaxed tracking-tight mt-10 md:mt-16 prose prose-a:text-blue-600 prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6"
+      >
         <PortableText value={post.body} />
       </div>
       <ShareButtons url={shareUrl} title={shareTitle} />
-      <div class="mt-8">
-        <h3 class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4">Temas Relacionados</h3>
-        {
-          post.tags?.map(tag => (
-            <span class="bg-highlight-gold text-md text-highlight-white rounded px-2 py-1 mx-0.5">{tag.title}</span>
-          ))
-        }
-      </div>
+      {post.tags && post.tags.length > 0 && (
+        <div class="mt-8">
+          <h3 class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4">
+            Temas Relacionados
+          </h3>
+          {
+            post.tags.map((tag) => (
+              <span class="bg-highlight-gold text-md text-highlight-white rounded px-2 py-1 mx-0.5">
+                {tag.title}
+              </span>
+            ))
+          }
+        </div>
+      )}
+      
     </div>
-    
   </section>
 </Layout>
