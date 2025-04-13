@@ -26,7 +26,7 @@ export default function DesktopCategoriesMenu({ categories }: Props) {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 hover:text-highlight-gold text-highlight-white mr-8"
+        className="flex items-center gap-1 text-highlight-white hover:text-highlight-gold transition-all duration-200 mr-8"
       >
         Categorías
         <svg
@@ -57,7 +57,7 @@ export default function DesktopCategoriesMenu({ categories }: Props) {
             <li key={category.slug.current} className="w-full">
               <a
                 href={`/categoria/${category.slug.current}`}
-                className="block w-full whitespace-nowrap text-primary hover:text-highlight-gold transition-all duration-200"
+                className="block w-full whitespace-nowrap font-semibold text-primary hover:text-highlight-gold transition-all duration-200"
               >
                 {category.title}
               </a>
