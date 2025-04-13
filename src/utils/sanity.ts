@@ -13,7 +13,10 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPost(slug: string): Promise<Post> {
   return await sanityClient.fetch(
-    groq`*[_type == "post" && slug.current == $slug][0]`,
+    groq`*[_type == "post" && slug.current == $slug][0]{
+      ...,
+      tags[]-> // <-- Aquí desreferencia los tags
+    }`,
     {
       slug,
     }

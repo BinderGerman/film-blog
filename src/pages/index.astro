@@ -17,10 +17,11 @@ const categoriesWithPosts = await getPostsGroupedByCategory();
   {
     categoriesWithPosts.map((category) => (
       <section class="px-4 lg:px-2 xl:px-0 ">
-        <a class="flex items-center gap-2 text-primary hover:text-highlight-gold transition" href={`/categoria/${category.slug.current}`}>
-          <h2 class="text-3xl font-bold pb-2 mt-16">
-            {category.title}
-          </h2>
+        <a
+          class="flex items-center gap-2 text-primary hover:text-highlight-gold transition"
+          href={`/categoria/${category.slug.current}`}
+        >
+          <h2 class="text-3xl font-bold pb-2 mt-16">{category.title}</h2>
           <PlusCircle class="mt-16 w-6 h-6 " />
         </a>
 
@@ -29,25 +30,7 @@ const categoriesWithPosts = await getPostsGroupedByCategory();
         <div class="w-full mb-4 h-1 bg-highlight-red" />
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {category.posts.map((post) => (
-            <article class="border rounded shadow hover:shadow-md transition">
-              <a href={`/post/${post.slug.current}`}>
-                {post.mainImage ? (
-                  <img
-                    class=""
-                    src={urlFor(post.mainImage).width(500).height(300).url()}
-                    alt={post.mainImage.alt || ""}
-                  />
-                ) : (
-                  <div class="" />
-                )}
-                <div class="p-4">
-                  <h3 class="text-lg text-primary font-semibold pb-4 pt-2">
-                    {post.title}
-                  </h3>
-                  <p class="text-sm text-highlight-gold pb-2">{post.excerpt}</p>
-                </div>
-              </a>
-            </article>
+            <Card post={post} />
           ))}
         </div>
       </section>

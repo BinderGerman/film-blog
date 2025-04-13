@@ -59,6 +59,15 @@ const shareTitle = post.title;
         <PortableText value={post.body} />
       </div>
       <ShareButtons url={shareUrl} title={shareTitle} />
+      <div class="mt-8">
+        <h3 class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4">Temas Relacionados</h3>
+        {
+          post.tags?.map(tag => (
+            <span class="bg-highlight-gold text-md text-highlight-white rounded px-2 py-1 mx-0.5">{tag.title}</span>
+          ))
+        }
+      </div>
     </div>
+    
   </section>
 </Layout>
