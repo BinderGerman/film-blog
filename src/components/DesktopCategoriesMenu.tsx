@@ -9,6 +9,12 @@ export default function DesktopCategoriesMenu({ categories }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // Al inicio del componente (después de useState y useRef)
+  useEffect(() => {
+    const event = new CustomEvent("categoriesMenuToggle", { detail: isOpen });
+    window.dispatchEvent(event);
+  }, [isOpen]);
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -26,7 +32,7 @@ export default function DesktopCategoriesMenu({ categories }: Props) {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 text-highlight-white hover:text-highlight-gold transition-all duration-200 mr-8"
+        className="flex items-center gap-1 text-highlight-white hover:text-highlight-gold transition-all duration-200 mr-6"
       >
         Categorías
         <svg
