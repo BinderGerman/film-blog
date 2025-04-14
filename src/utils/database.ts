@@ -64,7 +64,7 @@ export async function getPostsGroupedByCategory(): Promise<
       _id,
       title,
       slug,
-      "posts": *[_type == "post" && references(^._id)] | order(_createdAt desc)[0...5]{
+      "posts": *[_type == "post" && references(^._id)] | order(_createdAt desc)[0...6]{
         _id,
         title,
         slug,

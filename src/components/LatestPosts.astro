@@ -10,7 +10,7 @@ const posts: Post[] = await getLatestPosts();
   <h2 class="text-3xl text-center font-semibold mb-12">Últimos Artículos</h2>
   <ol class="list-none space-y-16 relative">
     {posts.map((post, index) => (
-      <li class="relative pl-8 border-b-2 pb-2">
+      <li class="relative pl-8 border-b-2 pb-2 border-b-primary">
         <span class="absolute text-[6rem] font-black outlined-number top-[-3rem] left-[0rem] z-0 leading-none pointer-events-none select-none">
           {index + 1}
         </span>

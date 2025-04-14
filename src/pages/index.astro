@@ -1,52 +1,16 @@
 ---
-import { PlusCircle } from "@lucide/astro";
-import { getPosts, getPostsGroupedByCategory } from "../utils/database";
-
 import Layout from "../layouts/Layout.astro";
 import HeaderSection from "../sections/HeaderSection.astro";
-import Card from "../components/Card.astro";
-import LatestPosts from "../components/LatestPosts.astro";
 
 import "../styles/global.css";
-
-const posts = await getPosts();
-const categoriesWithPosts = await getPostsGroupedByCategory();
+import MainSection from "../sections/MainSection.astro";
+import SidebarSection from "../sections/SidebarSection.astro";
 ---
 
 <Layout title="Los olvidos de Cronos - Blog personal de Roman Ganuza">
   <HeaderSection />
-  
-
-  <section class="flex flex-col lg:flex-row gap-8 xl:px-0">
-    <!-- Contenido principal -->
-    <div class="w-full lg:w-2/3">
-      {
-        categoriesWithPosts.map((category) => (
-          <div>
-            <a
-              class="flex items-center gap-2 text-primary hover:text-highlight-gold transition"
-              href={`/categoria/${category.slug.current}`}
-            >
-              <h2 class="text-3xl font-bold pb-2 mt-12">{category.title}</h2>
-              <PlusCircle class="w-6 h-6 mt-12" />
-            </a>
-
-            <div class="w-full h-1 bg-highlight-gold" />
-            <div class="w-full h-1 bg-highlight-white" />
-            <div class="w-full mb-4 h-1 bg-highlight-red" />
-            <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-              {category.posts.map((post) => (
-                <Card post={post} />
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <!-- Sidebar -->
-    <div class="w-full lg:w-1/3 mt-8">
-      <LatestPosts />
-    </div>
+  <section class="flex flex-col lg:flex-row gap-8 xl:px-0 px-4">
+    <MainSection />
+    <SidebarSection />
   </section>
 </Layout>
