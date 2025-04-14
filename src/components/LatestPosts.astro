@@ -15,7 +15,7 @@ const posts: Post[] = await getLatestPosts();
           {index + 1}
         </span>
         <a
-          href={`/blog/${post.slug.current}`}
+          href={`/post/${post.slug.current}`}
           class="relative z-10 text-xl font-semibold block text-primary hover:text-[#c1272d] transition-colors duration-300"
         >
           {post.title}
