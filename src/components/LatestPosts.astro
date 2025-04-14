@@ -1,0 +1,36 @@
+---
+// Archivo: src/components/OutlinedList.astro
+import { getLatestPosts } from "../utils/database"; 
+import type { Post } from "../types/post";
+
+const posts: Post[] = await getLatestPosts();
+---
+
+<section class="p-10 mx-auto bg-[#f9f9f9] rounded-lg">
+  <h2 class="text-3xl text-center font-semibold mb-12">Últimos Artículos</h2>
+  <ol class="list-none space-y-16 relative">
+    {posts.map((post, index) => (
+      <li class="relative pl-8 border-b-2 pb-2">
+        <span class="absolute text-[6rem] font-black outlined-number top-[-3rem] left-[0rem] z-0 leading-none pointer-events-none select-none">
+          {index + 1}
+        </span>
+        <a
+          href={`/blog/${post.slug.current}`}
+          class="relative z-10 text-xl font-semibold block text-primary hover:text-[#c1272d] transition-colors duration-300"
+        >
+          {post.title}
+        </a>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .outlined-number {
+    color: transparent;
+    -webkit-text-stroke: 2px #c1272d;
+    opacity: 0.4;
+  }
+</style>
+
+

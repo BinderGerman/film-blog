@@ -5,12 +5,14 @@ import type { Category } from "../types/category";
 import type { Post } from "../types/post";
 import type { CategoryWithPosts } from "../types/categoryWithPosts";
 
+/* Consulta todos los post publicados */
 export async function getPosts(): Promise<Post[]> {
   return await sanityClient.fetch(
     groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
   );
 }
 
+/* Consulta post por slug */
 export async function getPost(slug: string): Promise<Post> {
   return await sanityClient.fetch(
     groq`*[_type == "post" && slug.current == $slug][0]{
@@ -23,6 +25,7 @@ export async function getPost(slug: string): Promise<Post> {
   );
 }
 
+/* Consulta post por nombre de categoría */
 export async function getPostsByCategory(
   categoryName: string
 ): Promise<Post[]> {
@@ -32,7 +35,7 @@ export async function getPostsByCategory(
   );
 }
 
-// Importa listado de categorías para el menú excepto las destacadas
+// Consulta listado de categorías excepto DESTACADOS
 export async function getCategories(): Promise<Category[]> {
   return await sanityClient.fetch(
     groq`*[
@@ -48,8 +51,10 @@ export async function getCategories(): Promise<Category[]> {
   );
 }
 
-// Importa listado de Posts divididos por categoría
-export async function getPostsGroupedByCategory(): Promise<CategoryWithPosts[]> {
+// Consulta listado de Posts agrupados por categoría
+export async function getPostsGroupedByCategory(): Promise<
+  CategoryWithPosts[]
+> {
   return await sanityClient.fetch(
     `*[
       _type == "category" && 
@@ -71,7 +76,11 @@ export async function getPostsGroupedByCategory(): Promise<CategoryWithPosts[]> 
   );
 }
 
-export async function getPostsByCategorySlug(slug: string, page: number, pageSize = 20): Promise<Post[]> {
+export async function getPostsByCategorySlug(
+  slug: string,
+  page: number,
+  pageSize = 20
+): Promise<Post[]> {
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
 
@@ -101,3 +110,9 @@ export async function getTotalPostsByCategory(slug: string): Promise<number> {
   );
 }
 
+/* Últimos cinco post publicados */
+export async function getLatestPosts(): Promise<Post[]> {
+  return await sanityClient.fetch(
+    groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc) | order(publishedAt desc)[0...5]`
+  );
+}
