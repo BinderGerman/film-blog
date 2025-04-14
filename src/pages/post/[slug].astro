@@ -1,9 +1,9 @@
 ---
 import type { InferGetStaticParamsType } from "astro";
 import { PortableText } from "astro-portabletext";
-import { getPost, getPosts } from "../../utils/sanity";
-import { formatDate } from "../../utils";
-import { urlFor } from "../../utils/image";
+import { getPost, getPosts } from "../../utils/database";
+import { formatDate } from "../../utils/formatDate";
+import { urlFor } from "../../utils/imageBuilder";
 
 import Layout from "../../layouts/Layout.astro";
 import ShareButtons from "../../components/ShareButtons.astro";
@@ -67,21 +67,22 @@ const shareTitle = post.title;
         <PortableText value={post.body} />
       </div>
       <ShareButtons url={shareUrl} title={shareTitle} />
-      {post.tags && post.tags.length > 0 && (
-        <div class="mt-8">
-          <h3 class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4">
-            Temas Relacionados
-          </h3>
-          {
-            post.tags.map((tag) => (
-              <span class="bg-highlight-gold text-md text-highlight-white rounded px-2 py-1 mx-0.5">
-                {tag.title}
-              </span>
-            ))
-          }
-        </div>
-      )}
-      
+      {
+        post.tags && post.tags.length > 0 && (
+          <div class="mt-8">
+            <h3 class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4">
+              Temas Relacionados
+            </h3>
+            {post.tags.map((tag) => (
+              <a href="#">
+                <span class="bg-highlight-gold text-md text-highlight-white hover:bg-primary transition-all duration-200 rounded px-2 py-1 mx-0.5">
+                  {tag.title}
+                </span>
+              </a>
+            ))}
+          </div>
+        )
+      }
     </div>
   </section>
 </Layout>
