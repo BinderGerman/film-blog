@@ -13,9 +13,9 @@ const { categoriesWithPosts } = Astro.props
 {
   categoriesWithPosts.map((category) => (
     <div class="flex justify-between mt-12 lg:mt-24">
-      <h2 class="text-3xl font-bold">{category.title}</h2>
+      <h2 class="text-2xl lg:text-3xl font-bold">{category.title}</h2>
       <a  href={`/categoria/${category.slug.current}`}>
-        <span class=" text-primary font-semibold hover:text-highlight-red transition duration-200">Leer más +</span>
+        <span class=" text-primary font-semibold hover:text-highlight-red transition duration-200">Otras notas</span>
       </a>
     </div>
     <div class="w-full h-1 bg-highlight-gold" />

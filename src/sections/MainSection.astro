@@ -6,6 +6,6 @@ import CardGrid from "../components/CardGrid.astro";
 const categoriesWithPosts = await getPostsGroupedByCategory();
 ---
 
-<main class="w-full lg:w-2/3">
+<section class="w-full lg:w-2/3">
   <CardGrid categoriesWithPosts={categoriesWithPosts} />
-</main>
+</section>

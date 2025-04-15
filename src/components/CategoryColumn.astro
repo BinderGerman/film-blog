@@ -1,0 +1,33 @@
+---
+import type { Category } from "../types/category";
+
+interface Props {
+  categories: Category[];
+}
+
+const { categories } = Astro.props;
+---
+
+<aside class="p-10 mx-auto bg-[#f9f9f9] rounded-lg mt-8">
+  <h2 class="text-3xl text-center font-semibold mb-12">Categorías</h2>
+  <ul class="list-none space-y-8 relative">
+    {
+      categories.map((category) => (
+        <li
+          class="bg-cover bg-center rounded text-white py-5"
+          style={{
+            backgroundImage: `linear-gradient(rgba(18, 21, 39, 0.3), rgba(18, 21, 39, 0.95)), url(/${category.slug.current}.png)`,
+          }}
+        >
+          <a
+            href={`/categoria/${category.slug.current}`}
+            class="text-xl text-center font-semibold block text-highlight-white hover:text-highlight-red transition-colors duration-300"
+          >
+            {category.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>
+
