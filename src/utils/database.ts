@@ -46,6 +46,7 @@ export async function getCategories(): Promise<Category[]> {
         _id,
         title,
         slug,
+        mainImage,
         description
       }`
   );
