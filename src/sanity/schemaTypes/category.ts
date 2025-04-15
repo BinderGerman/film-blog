@@ -22,6 +22,22 @@ export const categoryType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "mainImage",
+      title: "Imagen de Portada",
+      description: "Imagen para representar la categoría",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Texto alternativo",
+        },
+      ],
+    }),
+    defineField({
       name: "description",
       type: "text",
       title: "Descripción",
@@ -30,7 +46,8 @@ export const categoryType = defineType({
       name: "order",
       type: "number",
       title: "Orden de aparición",
-      description: "Usá este campo para definir el orden en que se muestran las categorías.",
+      description:
+        "Usá este campo para definir el orden en que se muestran las categorías.",
     }),
   ],
 });
