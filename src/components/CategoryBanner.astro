@@ -1,0 +1,25 @@
+---
+import { urlFor } from "../utils/imageBuilder"; 
+import type { ImageAsset } from "@sanity/types";
+
+export interface Props {
+  title: string;
+  image: ImageAsset;
+}
+
+const { title, image } = Astro.props;
+---
+
+<div class="w-screen relative h-[40dvh] mb-32 mt-20 overflow-hidden">
+
+  <div
+    class="absolute inset-0 bg-cover bg-center z-0"
+    style={`background-image: linear-gradient(rgba(18, 21, 39, 0.3), rgba(18, 21, 39, 0.95)), url(${urlFor(image).url()})`}
+  ></div>
+
+  <div class="relative z-10 flex items-center justify-center h-full">
+    <h1 class="text-4xl font-bold text-highlight-white text-center px-4">
+      {title}
+    </h1>
+  </div>
+</div>

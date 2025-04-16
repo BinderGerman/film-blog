@@ -1,9 +1,7 @@
 ---
+import BaseLayout from "./BaseLayout.astro";
 import { ClientRouter } from "astro:transitions";
-
 import NavbarSection from "../sections/NavbarSection.astro";
-
-import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -11,69 +9,31 @@ interface Props {
   image?: string;
 }
 
-const {
-  title,
-  description = "Cine, narrativa y ensayo en un sitio artesanal - Por Roman Ganuza",
-  image = "og.png",
-} = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
+<BaseLayout title={title} description={description} image={image}>
+  <ClientRouter />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <NavbarSection />
+  <main class="m-auto max-w-[1180px] 2xl:max-w-[1280px]">
+    <slot />
+  </main>
 
-    <meta name="description" content={description} />
+  <script is:inline>
+    window.addEventListener("DOMContentLoaded", () => {
+      const headerLines = document.getElementById("header-lines");
 
-    <meta property="og:url" content="https://www.film-blog.pages.dev" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:locale" content="es_ES" />
-    <meta property="og:site_name" content="Los olvidos de Cronos" />
+      if (!headerLines) return;
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="" />
-    <meta name="twitter:creator" content="" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
-
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@500;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <ClientRouter />
-  </head>
-  <body class="bg-highlight-white">
-    <NavbarSection />
-    <main class="m-auto max-w-[1180px] 2xl:max-w-[1280px]">
-      <slot />
-    </main>
-  </body>
-</html>
-
-<script is:inline>
-  window.addEventListener("DOMContentLoaded", () => {
-    const headerLines = document.getElementById("header-lines");
-
-    if (!headerLines) return;
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        headerLines.classList.add("opacity-0", "h-0", "overflow-hidden");
-      } else {
-        headerLines.classList.remove("opacity-0", "h-0", "overflow-hidden");
-      }
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          headerLines.classList.add("opacity-0", "h-0", "overflow-hidden");
+        } else {
+          headerLines.classList.remove("opacity-0", "h-0", "overflow-hidden");
+        }
+      });
     });
-  });
-</script>
+  </script>
+</BaseLayout>
+

@@ -2,16 +2,19 @@
 import {
   getPostsByCategorySlug,
   getTotalPostsByCategory,
+  getCategoryBySlug,
 } from "../../../utils/database";
 import { urlFor } from "../../../utils/imageBuilder";
 
 import Layout from "../../../layouts/Layout.astro";
+import CategoryBanner from "../../../components/CategoryBanner.astro";
 
 const { slug, page } = Astro.params;
 
 const currentPage = page?.[0] ? parseInt(page[0]) : 1;
 const pageSize = 20;
 
+const category = await getCategoryBySlug(slug as string);
 const totalPosts = await getTotalPostsByCategory(slug as string);
 const totalPages = Math.ceil(totalPosts / pageSize);
 
@@ -22,9 +25,12 @@ const posts = await getPostsByCategorySlug(
 );
 ---
 
-<Layout title="Página de Categoría">
-  <section class="mt-32">
-    <h1>Artículos en: {slug}</h1>
+{category?.mainImage && (
+  <CategoryBanner title={category.title} image={category.mainImage} />
+)}
+
+<Layout title={`${category?.title}`}>
+  <section class="mt-20s">
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
     >
@@ -42,7 +48,7 @@ const posts = await getPostsByCategorySlug(
                 <div class="" />
               )}
               <div class="p-4">
-                <h3 class="text-lg text-highlight-white font-semibold pb-4 pt-2">
+                <h3 class="text-lg text-highlight-white font-semibold pb-4 pt-2 hover:text-highlight-red transition duration-200">
                   {post.title}
                 </h3>
                 <p class="text-sm text-highlight-gold pb-2">{post.excerpt}</p>
@@ -55,15 +61,15 @@ const posts = await getPostsByCategorySlug(
 
     {
       totalPages > 1 && (
-        <nav class="flex justify-center mt-6">
+        <nav class="flex justify-center mt-12 mb-6">
           <ul class="flex items-center gap-2">
             {currentPage > 1 && (
               <li>
                 <a
                   href={
                     currentPage - 1 === 1
-                      ? `/categoría/${slug}`
-                      : `/categoría/${slug}/${currentPage - 1}`
+                      ? `/categoria/${slug}`
+                      : `/categoria/${slug}/${currentPage - 1}`
                   }
                   class="px-3 py-1 border rounded hover:bg-gray-200"
                 >
@@ -76,8 +82,8 @@ const posts = await getPostsByCategorySlug(
               const pageNum = i + 1;
               const href =
                 pageNum === 1
-                  ? `/categoría/${slug}`
-                  : `/categoría/${slug}/${pageNum}`;
+                  ? `/categoria/${slug}`
+                  : `/categoria/${slug}/${pageNum}`;
               const isActive = pageNum === currentPage;
               return (
                 <li>
@@ -94,7 +100,7 @@ const posts = await getPostsByCategorySlug(
             {currentPage < totalPages && (
               <li>
                 <a
-                  href={`/categoría/${slug}/${currentPage + 1}`}
+                  href={`/categoria/${slug}/${currentPage + 1}`}
                   class="px-3 py-1 border rounded hover:bg-gray-200"
                 >
                   Siguiente

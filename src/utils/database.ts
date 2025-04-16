@@ -111,6 +111,19 @@ export async function getTotalPostsByCategory(slug: string): Promise<number> {
   );
 }
 
+export async function getCategoryBySlug(slug: string): Promise<Category | null> {
+  return await sanityClient.fetch(
+    `*[_type == "category" && slug.current == $slug][0]{
+      _id,
+      title,
+      slug,
+      description,
+      mainImage
+    }`,
+    { slug }
+  );
+}
+
 /* Últimos cinco post publicados */
 export async function getLatestPosts(): Promise<Post[]> {
   return await sanityClient.fetch(

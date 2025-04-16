@@ -48,7 +48,7 @@ export default function MobileMenu({ categories }: MobileMenuProps) {
         <span className="text-2xl font-semibold text-primary">Categorías</span>
         {categories.map((category) => (
           <a
-            className="pl-4 text-xl text-primary hover:text-highlight-gold transition-all duration-200"
+            className="pl-4 text-xl text-primary hover:text-highlight-red transition duration-200"
             key={category.slug.current}
             href={`/categoria/${category.slug.current}`}
             onClick={() => setIsOpen(false)}
@@ -57,14 +57,14 @@ export default function MobileMenu({ categories }: MobileMenuProps) {
           </a>
         ))}
         <a
-          className="text-2xl font-semibold text-primary hover:text-highlight-gold transition-all duration-200"
+          className="text-2xl font-semibold text-primary hover:text-highlight-red transition duration-200"
           href="/contacto"
           onClick={() => setIsOpen(false)}
         >
           Contacto
         </a>
         <a
-          className="text-2xl font-semibold text-primary hover:text-highlight-gold transition-all duration-200"
+          className="text-2xl font-semibold text-primary hover:text-highlight-red transition duration-200"
           href="/sobre-mi"
           onClick={() => setIsOpen(false)}
         >
