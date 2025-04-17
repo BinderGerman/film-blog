@@ -1,0 +1,114 @@
+---
+import {
+  getPostsByTagSlug,
+  getTotalPostsByTag,
+  getTagBySlug,
+} from "../../../utils/database";
+import { urlFor } from "../../../utils/imageBuilder";
+
+import Layout from "../../../layouts/Layout.astro";
+
+const { slug, page } = Astro.params;
+
+const currentPage = page?.[0] ? parseInt(page[0]) : 1;
+const pageSize = 20;
+
+const tag = await getTagBySlug(slug as string);
+const totalPosts = await getTotalPostsByTag(slug as string);
+const totalPages = Math.ceil(totalPosts / pageSize);
+
+const posts = await getPostsByTagSlug(
+  slug as string,
+  currentPage,
+  pageSize
+);
+---
+
+
+
+<Layout title={`${tag?.title}`}>
+  <section class="mt-20">
+    <div
+      class="flex-col p-10 mx-auto bg-[#f9f9f9] rounded-lg mt-8"
+    >
+      {
+        posts.map((post) => (
+          <article class="rounded shadow hover:shadow-md transition mb-8">
+            <a 
+              class="flex"
+              href={`/post/${post.slug.current}`}>
+                {post.mainImage ? (
+                  <img
+                    class=""
+                    src={urlFor(post.mainImage).width(125).height(75).url()}
+                    alt={post.mainImage.alt || ""}
+                  />
+                ) : (
+                  <div class="" />
+                )}
+              <div class="flex justify-start items-center w-full ml-8">
+                <h3 class="mr-4 text-xl text-primary font-semibold pb-4 pt-2 hover:text-highlight-red transition duration-200">
+                  {post.title}
+                </h3>
+                <p class="text-lg text-highlight-gold pb-2">{post.excerpt}</p>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    {
+      totalPages > 1 && (
+        <nav class="flex justify-center mt-12 mb-6">
+          <ul class="flex items-center gap-2">
+            {currentPage > 1 && (
+              <li>
+                <a
+                  href={
+                    currentPage - 1 === 1
+                      ? `/categoria/${slug}`
+                      : `/categoria/${slug}/${currentPage - 1}`
+                  }
+                  class="px-3 py-1 border rounded hover:bg-gray-200"
+                >
+                  Anterior
+                </a>
+              </li>
+            )}
+
+            {Array.from({ length: totalPages }).map((_, i) => {
+              const pageNum = i + 1;
+              const href =
+                pageNum === 1
+                  ? `/categoria/${slug}`
+                  : `/categoria/${slug}/${pageNum}`;
+              const isActive = pageNum === currentPage;
+              return (
+                <li>
+                  <a
+                    href={href}
+                    class={`px-3 py-1 border rounded ${isActive ? "bg-primary text-white" : "hover:bg-gray-200"}`}
+                  >
+                    {pageNum}
+                  </a>
+                </li>
+              );
+            })}
+
+            {currentPage < totalPages && (
+              <li>
+                <a
+                  href={`/categoria/${slug}/${currentPage + 1}`}
+                  class="px-3 py-1 border rounded hover:bg-gray-200"
+                >
+                  Siguiente
+                </a>
+              </li>
+            )}
+          </ul>
+        </nav>
+      )
+    }
+  </section>
+</Layout>

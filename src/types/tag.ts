@@ -3,4 +3,5 @@ export interface Tag {
   _type: "tag";
   title: string;
   slug: { current: string };
+  postCount: number;
 }

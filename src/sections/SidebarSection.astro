@@ -1,14 +1,17 @@
 ---
-import { getCategories, getLatestPosts } from "../utils/database";
+import { getCategories, getLatestPosts, getTopTags } from "../utils/database";
 
 import LatestPosts from "../components/LatestPosts.astro";
 import CategoryColumn from "../components/CategoryColumn.astro"
+import TopTags from "../components/TopTags.astro";
 
 const latestPosts = await getLatestPosts();
 const categories = await getCategories()
+const tags = await getTopTags()
 ---
 
 <section class="w-full lg:w-1/3 mt-8 lg:mt-16">
   <LatestPosts latestPosts={latestPosts} />
   <CategoryColumn categories={categories} />
+  <TopTags tags={tags} />
 </section>

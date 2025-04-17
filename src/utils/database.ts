@@ -4,6 +4,7 @@ import groq from "groq";
 import type { Category } from "../types/category";
 import type { Post } from "../types/post";
 import type { CategoryWithPosts } from "../types/categoryWithPosts";
+import type { Tag } from "../types/tag";
 
 /* Consulta todos los post publicados */
 export async function getPosts(): Promise<Post[]> {
@@ -128,5 +129,68 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
 export async function getLatestPosts(): Promise<Post[]> {
   return await sanityClient.fetch(
     groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc) | order(publishedAt desc)[0...5]`
+  );
+}
+
+/* Post filtrados por Etiqueta (Tag) */
+export async function getPostsByTagSlug(
+  slug: string,
+  page: number,
+  pageSize = 20
+): Promise<Post[]> {
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize;
+
+  return await sanityClient.fetch(
+    `*[
+      _type == "post" && 
+      references(*[_type == "tag" && slug.current == $slug]._id)
+    ] | order(_createdAt desc)[$start...$end]{
+      _id,
+      title,
+      slug,
+      excerpt,
+      publishedAt,
+      mainImage
+    }`,
+    { slug, start, end }
+  );
+}
+
+/* Número total de post por Etiqueta (Tag) */
+export async function getTotalPostsByTag(slug: string): Promise<number> {
+  return await sanityClient.fetch(
+    `count(*[
+      _type == "post" &&
+      references(*[_type == "tag" && slug.current == $slug]._id)
+    ])`,
+    { slug }
+  );
+}
+
+/* Título y Slug de Etiqueta */
+export async function getTagBySlug(slug: string): Promise<Tag | null> {
+  return await sanityClient.fetch(
+    `*[_type == "tag" && slug.current == $slug][0]{
+      _id,
+      title,
+      slug,
+    }`,
+    { slug }
+  );
+}
+
+export async function getTopTags(): Promise<Tag[]> {
+  return await sanityClient.fetch(
+    `*[_type == "tag"]{
+      _id,
+      _type,
+      title,
+      slug,
+      "postCount": count(*[
+        _type == "post" &&
+        references(^._id)
+      ])
+    } | order(postCount desc)[0...10]`
   );
 }
