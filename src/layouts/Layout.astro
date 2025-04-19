@@ -1,5 +1,5 @@
 ---
-import { ClientRouter } from "astro:transitions";
+
 
 import BaseLayout from "./BaseLayout.astro";
 import NavbarSection from "../sections/NavbarSection.astro";
@@ -14,7 +14,7 @@ const { title, description, image } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image}>
-  <ClientRouter />
+  
 
   <NavbarSection />
   <main class="m-auto max-w-[1180px] 2xl:max-w-[1280px]">
