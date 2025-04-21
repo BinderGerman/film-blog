@@ -25,12 +25,14 @@ const posts = await getPostsByCategorySlug(
 );
 ---
 
-{category?.mainImage && (
-  <CategoryBanner title={category.title} image={category.mainImage} />
-)}
-
 <Layout title={`${category?.title}`}>
-  <section class="mt-20s">
+  {
+    category?.mainImage && (
+      <CategoryBanner title={category.title} image={category.mainImage} />
+    )
+  }
+
+  <section class="mt-20s m-auto max-w-[1180px] 2xl:max-w-[1280px]">
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
     >

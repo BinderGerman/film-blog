@@ -1,0 +1,23 @@
+---
+import { undefined } from 'astro:schema';
+
+
+export interface Props {
+  title: string | undefined;
+}
+
+const { title } = Astro.props;
+---
+<div class="w-screen relative h-[40dvh] mb-32 mt-20 overflow-hidden">
+
+    <div
+      class="absolute inset-0 bg-cover bg-center z-0 w-full"
+      style={`background-image: linear-gradient(rgba(18, 21, 39, 0.3)`}
+    ></div>
+  
+    <div class="relative z-10 flex items-center justify-center h-full">
+      <h1 class="text-4xl font-bold text-primary text-center px-4">
+        # {title}
+      </h1>
+    </div>
+  </div>

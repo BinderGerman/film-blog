@@ -1,16 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HeaderSection from "../sections/HeaderSection.astro";
+import HeaderSection from "../sections/SliderSection.astro";
 
 import "../styles/global.css";
 import MainSection from "../sections/MainSection.astro";
 import SidebarSection from "../sections/SidebarSection.astro";
 ---
 
-<Layout title="Los olvidos de Cronos - Blog personal de Roman Ganuza">
-  <HeaderSection />
-  <section class="flex flex-col lg:flex-row gap-8 xl:px-0 px-4">
-    <MainSection />
-    <SidebarSection />
-  </section>
+<Layout title="Los olvidos de Cronos - Roman Ganuza">
+  <div class="m-auto max-w-[1180px] 2xl:max-w-[1280px]">
+    <HeaderSection />
+    <section class="flex flex-col lg:flex-row gap-8 xl:px-0 px-4">
+      <MainSection />
+      <SidebarSection />
+    </section>
+  </div>
 </Layout>

@@ -7,6 +7,7 @@ import {
 import { urlFor } from "../../../utils/imageBuilder";
 
 import Layout from "../../../layouts/Layout.astro";
+import TagBanner from "../../../components/TagBanner.astro";
 
 const { slug, page } = Astro.params;
 
@@ -17,52 +18,34 @@ const tag = await getTagBySlug(slug as string);
 const totalPosts = await getTotalPostsByTag(slug as string);
 const totalPages = Math.ceil(totalPosts / pageSize);
 
-const posts = await getPostsByTagSlug(
-  slug as string,
-  currentPage,
-  pageSize
-);
+const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
 ---
 
-<div class="w-screen relative h-[40dvh] mb-32 mt-20 overflow-hidden">
-
-  <div
-    class="absolute inset-0 bg-cover bg-center z-0 w-full"
-    style={`background-image: linear-gradient(rgba(18, 21, 39, 0.3)`}
-  ></div>
-
-  <div class="relative z-10 flex items-center justify-center h-full">
-    <h1 class="text-4xl font-bold text-primary text-center px-4">
-      # {tag?.title}
-    </h1>
-  </div>
-</div>
-
 <Layout title={`${tag?.title}`}>
-  <section class="mt-20">
-    <div
-      class="flex-col p-10 mx-auto bg-[#f9f9f9] rounded-lg mt-8"
-    >
+  <TagBanner title={tag?.title} />
+
+  <section class="mt-20 m-auto max-w-[1180px] 2xl:max-w-[1280px]">
+    <div class="flex-col p-10 mx-auto bg-[#f9f9f9] rounded-lg mt-8">
       {
         posts.map((post) => (
           <article class="rounded shadow hover:shadow-md transition mb-8">
-            <a 
-              class="flex"
-              href={`/post/${post.slug.current}`}>
-                {post.mainImage ? (
-                  <img
-                    class=""
-                    src={urlFor(post.mainImage).width(125).height(75).url()}
-                    alt={post.mainImage.alt || ""}
-                  />
-                ) : (
-                  <div class="" />
-                )}
+            <a class="flex" href={`/post/${post.slug.current}`}>
+              {post.mainImage ? (
+                <img
+                  class=""
+                  src={urlFor(post.mainImage).width(125).height(75).url()}
+                  alt={post.mainImage.alt || ""}
+                />
+              ) : (
+                <div class="" />
+              )}
               <div class="flex-col justify-start items-center w-full ml-8">
                 <h3 class="text-lg sm:text-xl text-primary font-semibold pb-4 pt-2 hover:text-highlight-red transition duration-200">
                   {post.title}
                 </h3>
-                <p class="hidden sm:block text-lg text-highlight-gold pb-2">{post.excerpt}</p>
+                <p class="hidden sm:block text-lg text-highlight-gold pb-2">
+                  {post.excerpt}
+                </p>
               </div>
             </a>
           </article>

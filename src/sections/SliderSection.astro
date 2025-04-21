@@ -1,0 +1,10 @@
+---
+import { Slider } from "../components/header/Slider"
+import { getPostsByCategory } from "../utils/database"
+import type { Post } from "../types/post"
+
+const posts: Post[] = await getPostsByCategory("DESTACADOS");
+---
+<section class="mt-12 relative">
+  <Slider featuredPosts={posts} client:load />
+</section>
