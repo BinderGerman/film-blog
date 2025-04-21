@@ -15,4 +15,11 @@ import SidebarSection from "../sections/SidebarSection.astro";
       <SidebarSection />
     </section>
   </div>
+  <div id="search"></div>
+  <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      // @ts-ignore
+      new PagefindUI({ element: "#search", showSubResults: true });
+    });
+  </script>
 </Layout>
