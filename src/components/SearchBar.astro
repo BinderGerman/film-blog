@@ -1,0 +1,15 @@
+---
+---
+<div id="search" class="w-full max-w-xl mx-auto mt-8" />
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    //@ts-ignore
+    new PagefindUI({
+      element: "#search",
+      showSubResults: false, // oculta resultados anidados
+      showImages: true,     // muestra imágenes
+      highlightParam: "highlight", // permite resaltar texto
+    });
+  });
+</script>

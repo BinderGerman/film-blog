@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import "../styles/global.css";
 import NavbarSection from "../sections/HeaderSection.astro";
 
@@ -45,8 +46,10 @@ const {
       rel="stylesheet"
     />
 
-    <script src="/pagefind/pagefind.js" is:inline></script>
+    <script src="/pagefind/pagefind.js"></script>
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
+
+    <ClientRouter />
   </head>
 
   <body class="bg-highlight-white">
