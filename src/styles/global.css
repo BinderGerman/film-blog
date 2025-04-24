@@ -18,12 +18,15 @@
   --pagefind-ui-tag: #eeeeee;
   --pagefind-ui-border-width: 1px;
   --pagefind-ui-border-radius: 12px;
-  --pagefind-ui-image-border-radius: 8px;
-  --pagefind-ui-image-box-ratio: 1 / 1;
+  --pagefind-ui-image-border-radius: 0.5rem;
+  --pagefind-ui-image-box-ratio: 1 / 1; 
   --pagefind-ui-font: 'Inter', sans-serif;
 }
 
-
+.pagefind-ui__search-input {
+  color: var(--color-primary) !important;
+  /* o text-highlight-white si es modo oscuro */
+}
 .pagefind-ui__result {
   display: flex;
   align-items: flex-start;
