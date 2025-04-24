@@ -36,9 +36,9 @@
 }
 
 .pagefind-ui__result-image {
-  width: 64px;
-  height: auto;
-  border-radius: var(--pagefind-ui-image-border-radius);
+  width: 200px;
+  height: 100px;
+  border-radius: 0.5rem;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -50,7 +50,7 @@
 .pagefind-ui__result-title {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-highlight-red);
+  color: var(--color-primary);
 }
 
 /* Estilos para la paginación y navegación del Slider de Swiper */
