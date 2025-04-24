@@ -32,10 +32,8 @@
 
 .pagefind-ui__search-clear {
   font-size: 16px;
-  padding: 6px 16px;
-  background-color: var(--color-primary);
-  color: var(--color-highlight-white);
-  border-radius: 0.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
 }
 
 .pagefind-ui__result {

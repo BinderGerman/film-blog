@@ -46,14 +46,14 @@ export default function DesktopSearchBar() {
   }, []);
 
   return (
-    <div className="relative ml-4" ref={menuRef}>
+    <div className="relative ml-2 sm:ml-4" ref={menuRef}>
       <Search
         onClick={() => setIsOpen(!isOpen)}
         className="cursor-pointer text-highlight-white hover:text-highlight-red transition duration-200"
       />
       
       <div
-        className={`absolute right-0 top-full bg-white shadow-lg mt-6 w-[350px] sm:w-[450px] lg:w-[550px] rounded p-3 transition-all duration-300 ease-out z-50
+        className={`absolute right-0 top-full bg-white shadow-lg mt-6 w-[400px] sm:w-[500px] lg:w-[600px] rounded p-3 transition-all duration-300 ease-out z-50
           ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}
         `}
       >
