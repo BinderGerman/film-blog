@@ -25,7 +25,9 @@
 
 .pagefind-ui__search-input {
   color: var(--color-primary) !important;
-  /* o text-highlight-white si es modo oscuro */
+  width: 100% !important;
+  border-radius: none !important
+
 }
 .pagefind-ui__result {
   display: flex;
@@ -33,6 +35,10 @@
   gap: 1rem;
   padding: 1rem;
   border-bottom: 1px solid #eee;
+}
+
+.pagefind-ui__result-excerpt {
+  color: var(--color-primary) !important;
 }
 
 .pagefind-ui__result-image {
