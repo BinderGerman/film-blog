@@ -7,20 +7,47 @@
   --color-highlight-white: #ffffff;
 }
 
-.pagefind-ui__search-input {
-  @apply w-full border border-red-900 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500;
+
+/* Estilos para el buscador */
+:root {
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: var(--color-highlight-red);
+  --pagefind-ui-text: var(--color-primary);
+  --pagefind-ui-background: var(--color-highlight-white);
+  --pagefind-ui-border: #eeeeee;
+  --pagefind-ui-tag: #eeeeee;
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 12px;
+  --pagefind-ui-image-border-radius: 8px;
+  --pagefind-ui-image-box-ratio: 1 / 1;
+  --pagefind-ui-font: 'Inter', sans-serif;
 }
 
+
 .pagefind-ui__result {
-  @apply p-4 border-b border-gray-200;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.pagefind-ui__result-image {
+  width: 64px;
+  height: auto;
+  border-radius: var(--pagefind-ui-image-border-radius);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.pagefind-ui__result-content {
+  flex: 1;
 }
 
 .pagefind-ui__result-title {
-  @apply text-lg font-semibold text-indigo-600 hover:underline;
-}
-
-.pagefind-ui__message {
-  @apply text-gray-500 text-sm mt-2;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-highlight-red);
 }
 
 /* Estilos para la paginación y navegación del Slider de Swiper */

@@ -3,6 +3,7 @@ import MobileMenu from '../components/navbar/MobileMenu';
 import ScrollHideHeader from '../components/navbar/ScrollHideHeader';
 import DesktopCategoriesMenu from '../components/navbar/DesktopCategoriesMenu';
 import { getCategories } from '../utils/database';
+import DesktopSearchBar from '../components/navbar/DesktopSearchBar';
 
 const categories = await getCategories();
 ---
@@ -20,10 +21,12 @@ const categories = await getCategories();
       <DesktopCategoriesMenu client:load categories={categories} />
       <a href="/contacto" class="text-highlight-white hover:text-highlight-red transition duration-200">Contacto</a>
       <a href="/sobre-mi" class="text-highlight-white hover:text-highlight-red transition duration-200">Sobre mí</a>
+      <DesktopSearchBar client:load  />
     </nav>
 
     <!-- Menú Mobile -->
-    <div class="md:hidden">
+    <div class="md:hidden flex gap-4">
+      <DesktopSearchBar client:load  />
       <MobileMenu client:load categories={categories} />
     </div>
   </div>

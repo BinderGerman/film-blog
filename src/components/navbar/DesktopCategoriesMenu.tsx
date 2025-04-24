@@ -9,7 +9,6 @@ export default function DesktopCategoriesMenu({ categories }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Al inicio del componente (después de useState y useRef)
   useEffect(() => {
     const event = new CustomEvent("categoriesMenuToggle", { detail: isOpen });
     window.dispatchEvent(event);

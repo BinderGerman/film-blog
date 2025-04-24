@@ -3,18 +3,28 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function ScrollHideHeader() {
   const lastScroll = useRef(0);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menusOpen, setMenusOpen] = useState({
+    categories: false,
+    search: false,  
+  });
 
   useEffect(() => {
-    const handleMenuToggle = (event: Event) => {
+    const handleCategoryToggle = (event: Event) => {
       const customEvent = event as CustomEvent;
-      setMenuOpen(customEvent.detail);
+      setMenusOpen((prev) => ({ ...prev, categories: customEvent.detail }));
     };
 
-    window.addEventListener('categoriesMenuToggle', handleMenuToggle);
+    const handleSearchToggle = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      setMenusOpen((prev) => ({ ...prev, search: customEvent.detail }));
+    };
+
+    window.addEventListener('categoriesMenuToggle', handleCategoryToggle);
+    window.addEventListener('searchBarMenuToggle', handleSearchToggle);
 
     return () => {
-      window.removeEventListener('categoriesMenuToggle', handleMenuToggle);
+      window.removeEventListener('categoriesMenuToggle', handleCategoryToggle);
+      window.removeEventListener('searchBarMenuToggle', handleSearchToggle);
     };
   }, []);
 
@@ -25,8 +35,9 @@ export default function ScrollHideHeader() {
 
       if (!header) return;
 
-      // No ocultar si el menú está abierto
-      if (menuOpen) {
+      const isAnyMenuOpen = menusOpen.categories || menusOpen.search;
+
+      if (isAnyMenuOpen) {
         header.style.transform = 'translateY(0)';
         return;
       }
@@ -42,7 +53,7 @@ export default function ScrollHideHeader() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [menuOpen]);
+  }, [menusOpen]);
 
   return null;
 }
