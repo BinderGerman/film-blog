@@ -17,15 +17,17 @@ const categories = await getCategories();
     </a>
 
     <!-- Menú Desktop -->
-    <nav class="hidden md:flex space-x-6 items-center text-highlight-white">
-      <DesktopCategoriesMenu client:load categories={categories} />
-      <a href="/contacto" class="text-highlight-white hover:text-highlight-red transition duration-200">Contacto</a>
-      <a href="/sobre-mi" class="text-highlight-white hover:text-highlight-red transition duration-200">Sobre mí</a>
-    </nav>
-    <DesktopSearchBar client:load  />
+    <div>
+      <nav class="hidden md:flex space-x-6 items-center text-highlight-white">
+        <DesktopCategoriesMenu client:load categories={categories} />
+        <a href="/contacto" class="text-highlight-white hover:text-highlight-red transition duration-200">Contacto</a>
+        <a href="/sobre-mi" class="text-highlight-white hover:text-highlight-red transition duration-200">Sobre mí</a>
+      </nav>
+      <DesktopSearchBar client:load  />
+    </div> 
+    
     <!-- Menú Mobile -->
     <div class="md:hidden flex gap-4">
-      
       <MobileMenu client:load categories={categories} />
     </div>
   </div>

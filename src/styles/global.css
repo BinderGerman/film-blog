@@ -25,10 +25,18 @@
 
 .pagefind-ui__search-input {
   color: var(--color-primary) !important;
-  width: 100% !important;
+  width: 85% !important;
   border-radius: none !important
-
 }
+
+.pagefind-ui__search-clear {
+  font-size: 18px;
+  padding-top: 0.24rem 0.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-highlight-white);
+  border-radius: 0.5rem;
+}
+
 .pagefind-ui__result {
   display: flex;
   align-items: flex-start;
