@@ -17,7 +17,7 @@ const categories = await getCategories();
     </a>
 
     <!-- Menú Desktop -->
-    <div>
+    <div class="flex">
       <nav class="hidden md:flex space-x-6 items-center text-highlight-white">
         <DesktopCategoriesMenu client:load categories={categories} />
         <a href="/contacto" class="text-highlight-white hover:text-highlight-red transition duration-200">Contacto</a>

@@ -46,7 +46,7 @@ export default function DesktopSearchBar() {
   }, []);
 
   return (
-    <div className="relative" ref={menuRef}>
+    <div className="relative ml-4" ref={menuRef}>
       <Search
         onClick={() => setIsOpen(!isOpen)}
         className="cursor-pointer text-highlight-white hover:text-highlight-red transition duration-200"

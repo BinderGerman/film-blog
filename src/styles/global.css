@@ -25,13 +25,14 @@
 
 .pagefind-ui__search-input {
   color: var(--color-primary) !important;
-  width: 85% !important;
-  border-radius: none !important
+  width: 80% !important;
+  border-radius: 0.5rem !important;
+  padding: 4px 6px;
 }
 
 .pagefind-ui__search-clear {
-  font-size: 18px;
-  padding-top: 0.24rem 0.5rem;
+  font-size: 16px;
+  padding: 6px 16px;
   background-color: var(--color-primary);
   color: var(--color-highlight-white);
   border-radius: 0.5rem;
