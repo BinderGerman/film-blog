@@ -23,6 +23,12 @@
   --pagefind-ui-font: 'Inter', sans-serif;
 }
 
+#search {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
 .pagefind-ui__search-input {
   color: var(--color-primary) !important;
   width: 80% !important;

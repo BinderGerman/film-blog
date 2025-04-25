@@ -59,18 +59,19 @@ export default function DesktopSearchBar() {
               : `<span class="bg-[--color-highlight-gold] text-[--color-highlight-white] rounded px-2 py-1 text-sm">${data.meta.tag}</span>`
             : "";
       
-            return `
-              <a href="${data.url}" class="pagefind-ui__result hover:bg-gray-50 transition rounded-lg">
-                ${image}
-                <div class="pagefind-ui__result-content">
-                  <h2 class="pagefind-ui__result-title">${title}</h2>
-                  <p class="pagefind-ui__result-excerpt">${excerpt}</p>
-                  <div class="mt-2 flex flex-wrap gap-1">${tags}</div>
-                </div>
-              </a>
-            `;
-          }
+          return `
+            <a href="${data.url}" class="pagefind-ui__result hover:bg-gray-100 transition rounded-lg">
+              ${image}
+              <div class="pagefind-ui__result-content">
+                <h2 class="pagefind-ui__result-title">${title}</h2>
+                <p class="pagefind-ui__result-excerpt mt-1">${excerpt}</p>
+                ${tags ? `<div class="mt-2 flex flex-wrap gap-1">${tags}</div>` : ""}
+              </div>
+            </a>
+          `;
+        }
       });
+      
         
     };
 
