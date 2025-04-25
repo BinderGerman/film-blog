@@ -33,44 +33,42 @@ export default function DesktopSearchBar() {
         element: "#search",
         showSubResults: false,
         showImages: true,
-        excerptLength: 30,
         highlightParam: "highlight",
-        renderResult: (
-          result: HTMLElement,
-          data: {
-            url: string;
-            meta: {
-              title?: string;
-              excerpt?: string;
-              image?: string;
-              tag?: string | string[];
-            };
-          }
-        ) => {
-          const image = data.meta?.image
-            ? `<img src="${data.meta.image}" class="pagefind-ui__result-image" alt="Preview" />`
-            : "";
-      
-          const title = data.meta?.title || "";
-          const excerpt = data.meta?.excerpt || "";
-          const tags = data.meta?.tag
-            ? Array.isArray(data.meta.tag)
-              ? data.meta.tag.map(tag => `<span class="bg-[--color-highlight-gold] text-[--color-highlight-white] rounded px-2 py-1 text-sm mr-2">${tag}</span>`).join("")
-              : `<span class="bg-[--color-highlight-gold] text-[--color-highlight-white] rounded px-2 py-1 text-sm">${data.meta.tag}</span>`
-            : "";
+        renderResult: (result: {
+          url: string;
+          title: string;
+          image?: string;
+          meta?: {
+            excerpt?: string;
+            tag?: string[]; // o tag?: string | string[]
+          };
+        }): string => {
+          const data = result.meta || {};
+          const tags = Array.isArray(data.tag) ? data.tag : data.tag ? [data.tag] : [];
       
           return `
-            <a href="${data.url}" class="pagefind-ui__result hover:bg-gray-100 transition rounded-lg">
-              ${image}
+            <div class="pagefind-ui__result">
+              ${result.image ? `
+                <img src="${result.image}" class="pagefind-ui__result-image" alt="Imagen del post">
+              ` : ''}
               <div class="pagefind-ui__result-content">
-                <h2 class="pagefind-ui__result-title">${title}</h2>
-                <p class="pagefind-ui__result-excerpt mt-1">${excerpt}</p>
-                ${tags ? `<div class="mt-2 flex flex-wrap gap-1">${tags}</div>` : ""}
+                <a href="${result.url}" class="pagefind-ui__result-title">${result.title}</a>
+                ${data.excerpt ? `<p class="pagefind-ui__result-excerpt">${data.excerpt}</p>` : ''}
+                ${tags.length > 0 ? `
+                  <div class="mt-2 flex flex-wrap gap-2">
+                    ${tags.map(tag => `
+                      <span class="bg-highlight-gold text-highlight-white text-sm px-2 py-1 rounded">
+                        ${tag}
+                      </span>
+                    `).join('')}
+                  </div>
+                ` : ''}
               </div>
-            </a>
+            </div>
           `;
-        }
+        },
       });
+      
       
         
     };
