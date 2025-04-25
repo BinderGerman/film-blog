@@ -53,7 +53,7 @@ export default function DesktopSearchBar() {
       />
       
       <div
-        className={`absolute right-0 top-full bg-white shadow-lg mt-6 w-[400px] sm:w-[500px] lg:w-[600px] rounded p-3 transition-all duration-300 ease-out z-50
+        className={`absolute right-0 top-full bg-white shadow-lg mt-6 w-[350px] sm:w-[500px] lg:w-[600px] rounded p-3 transition-all duration-300 ease-out z-50
           ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}
         `}
       >
