@@ -56,10 +56,6 @@
   border-bottom: 1px solid #eee;
 }
 
-.pagefind-ui__result-title {
-  color: var(--color-primary) !important;
-}
-
 .pagefind-ui__result-excerpt {
   display: none !important;
 }
@@ -81,6 +77,10 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-primary);
+}
+
+.pagefind-ui__result-tag:nth-child(1) {
+  order: 2;
 }
 
 /* Estilos para la paginación y navegación del Slider de Swiper */
