@@ -32,13 +32,14 @@
 
 .pagefind-ui__search-input:focus {
   outline: none !important;
-  border: 0.5px solid var(--color-highlight-red) !important;
+  border: 0.5px solid var(--color-primary) !important;
 }
 
 .pagefind-ui__search-clear {
   font-size: 16px;
   font-weight: bold;
   color: var(--color-primary);
+  margin-left: 8px;
 }
 
 .pagefind-ui__result {

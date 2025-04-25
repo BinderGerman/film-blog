@@ -48,22 +48,26 @@ const shareTitle = post.title;
     <div class="px-4">
       <h1
         class="font-sans text-3xl md:text-5xl leading-tight md:leading-tight font-extrabold my-6 md:mt-16 md:mb-0 tracking-tight"
+        data-pagefind-meta="title"
       >
         {post.title}
       </h1>
       <h2
         class="font-serif text-xl md:text-2xl leading-relaxed font-normal mt-0 mb-6"
+        data-pagefind-meta="excerpt"
       >
         {post.excerpt}
       </h2>
       <p
         class="font-sans font-semibold text-sm md:text-lg leading-snug mt-4 md:mt-0"
+        data-pagefind-ignore
       >
         {formatDate(post._createdAt)}
       </p>
       <ShareButtons url={shareUrl} title={shareTitle} />
       <div
         class="font-serif font-normal text-lg md:text-xl leading-relaxed tracking-tight mt-10 md:mt-16 prose prose-a:text-blue-600 prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6"
+        data-pagefind-ignore
       >
         <PortableText value={post.body} />
       </div>
@@ -76,7 +80,10 @@ const shareTitle = post.title;
             </h3>
             {post.tags.map((tag) => (
               <a class="flex my-2" href="#">
-                <span class="bg-highlight-gold text-md text-highlight-white hover:bg-primary transition-all duration-200 rounded px-2 py-1 mx-0.5">
+                <span 
+                  class="bg-highlight-gold text-md text-highlight-white hover:bg-primary transition-all duration-200 rounded px-2 py-1 mx-0.5"
+                  data-pagefind-meta="tag" data-pagefind-meta-append
+                >
                   {tag.title}
                 </span>
               </a>
