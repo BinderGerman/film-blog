@@ -61,9 +61,9 @@
 }
 
 .pagefind-ui__result-image {
-  max-width: 200px !important;
-  width: 200px;
-  height: 100px;
+  max-width: 150px !important;
+  width: 150px;
+  height: 80px;
   border-radius: 0.5rem;
   object-fit: cover;
   flex-shrink: 0;
@@ -79,8 +79,9 @@
   color: var(--color-primary);
 }
 
-.pagefind-ui__result-tag:nth-child(1) {
-  order: 2;
+.pagefind-ui__result-tags {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 /* Estilos para la paginación y navegación del Slider de Swiper */
