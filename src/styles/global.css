@@ -91,6 +91,16 @@
   flex-direction: column-reverse;
 }
 
+@media (max-width: 639px) {
+  .pagefind-ui__search-input {
+    width: 75% !important;
+  }
+  
+  .pagefind-ui__result {
+    flex-direction: column;
+  }
+}
+
 /* Estilos para la paginación y navegación del Slider de Swiper */
 .swiper-button-next,
 .swiper-button-prev {
