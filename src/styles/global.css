@@ -56,11 +56,16 @@
   border-bottom: 1px solid #eee;
 }
 
-.pagefind-ui__result-excerpt {
+.pagefind-ui__result-title {
   color: var(--color-primary) !important;
 }
 
+.pagefind-ui__result-excerpt {
+  display: none !important;
+}
+
 .pagefind-ui__result-image {
+  max-width: 200px !important;
   width: 200px;
   height: 100px;
   border-radius: 0.5rem;

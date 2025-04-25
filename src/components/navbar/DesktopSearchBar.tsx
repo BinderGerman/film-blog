@@ -31,46 +31,10 @@ export default function DesktopSearchBar() {
       // @ts-ignore
       new window.PagefindUI({
         element: "#search",
-        showSubResults: false,
-        showImages: true,
-        highlightParam: "highlight",
-        renderResult: (result: {
-          url: string;
-          title: string;
-          image?: string;
-          meta?: {
-            excerpt?: string;
-            tag?: string[]; // o tag?: string | string[]
-          };
-        }): string => {
-          const data = result.meta || {};
-          const tags = Array.isArray(data.tag) ? data.tag : data.tag ? [data.tag] : [];
-      
-          return `
-            <div class="pagefind-ui__result">
-              ${result.image ? `
-                <img src="${result.image}" class="pagefind-ui__result-image" alt="Imagen del post">
-              ` : ''}
-              <div class="pagefind-ui__result-content">
-                <a href="${result.url}" class="pagefind-ui__result-title">${result.title}</a>
-                ${data.excerpt ? `<p class="pagefind-ui__result-excerpt">${data.excerpt}</p>` : ''}
-                ${tags.length > 0 ? `
-                  <div class="mt-2 flex flex-wrap gap-2">
-                    ${tags.map(tag => `
-                      <span class="bg-highlight-gold text-highlight-white text-sm px-2 py-1 rounded">
-                        ${tag}
-                      </span>
-                    `).join('')}
-                  </div>
-                ` : ''}
-              </div>
-            </div>
-          `;
-        },
-      });
-      
-      
-        
+      showSubResults: false,
+      showImages: true, 
+      highlightParam: "highlight", 
+      });  
     };
 
     if (document.readyState === "complete") {
