@@ -48,6 +48,13 @@
   margin-left: 8px;
 }
 
+.pagefind-ui__message {
+  margin-top: 8px;
+  color: var(--color-highlight-red);
+  font-size: 14px;
+  font-weight: 300;
+}
+
 .pagefind-ui__result {
   display: flex;
   align-items: flex-start;
