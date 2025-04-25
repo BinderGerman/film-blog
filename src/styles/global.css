@@ -56,10 +56,6 @@
   border-bottom: 1px solid #eee;
 }
 
-.pagefind-ui__result-excerpt {
-  display: none !important;
-}
-
 .pagefind-ui__result-image {
   max-width: 150px !important;
   width: 150px;
@@ -77,6 +73,10 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-primary);
+}
+
+.pagefind-ui__result-excerpt {
+  display: none !important;
 }
 
 .pagefind-ui__result-tags {
