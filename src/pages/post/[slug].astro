@@ -1,7 +1,7 @@
 ---
 import type { InferGetStaticParamsType } from "astro";
 import { PortableText } from "astro-portabletext";
-import { getPost, getPosts } from "../../utils/database";
+import { getPost, getPosts, getTotalPostsByTag } from "../../utils/database";
 import { formatDate } from "../../utils/formatDate";
 import { urlFor } from "../../utils/imageBuilder";
 
@@ -22,6 +22,16 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 const { slug } = Astro.params as Params;
 
 const post = await getPost(slug);
+
+const tagsWithPostCount = await Promise.all(
+  (post.tags || []).map(async (tag) => {
+    const postCount = await getTotalPostsByTag(tag.slug.current);
+    return {
+      ...tag,
+      postCount,
+    };
+  })
+);
 
 const shareUrl = `https://film-blog.pages.dev/post/${post.slug}`;
 const shareTitle = post.title;
@@ -75,19 +85,35 @@ const shareTitle = post.title;
       {
         post.tags && post.tags.length > 0 && (
           <div class="mt-8">
-            <h3 class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4" data-pagefind-ignore>
+            <h3
+              class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4"
+              data-pagefind-ignore
+            >
               Temas Relacionados
             </h3>
-            {post.tags.map((tag) => (
-              <a class="flex my-2" href="#">
-                <span 
-                  class="bg-highlight-gold text-md text-highlight-white hover:bg-primary transition-all duration-200 rounded px-2 py-1 mx-0.5"
-                  data-pagefind-meta="Etiquetas" data-pagefind-meta-append
-                >
-                  {tag.title}
-                </span>
-              </a>
-            ))}
+            {tagsWithPostCount.map((tag) =>
+              tag.postCount > 1 ? (
+                <a class="flex my-2" href={`/tag/${tag.slug.current}`}>
+                  <span
+                    class="bg-highlight-gold text-sm text-highlight-white hover:bg-primary transition-all duration-200 rounded px-2 py-1 mx-0.5"
+                    data-pagefind-meta="Etiquetas"
+                    data-pagefind-meta-append
+                  >
+                    {tag.title}
+                  </span>
+                </a>
+              ) : (
+                <div class="flex my-2">
+                  <span
+                    class="border border-highlight-gold text-sm text-highlight-gold rounded px-2 py-1 mx-0.5"
+                    data-pagefind-meta="Etiquetas"
+                    data-pagefind-meta-append
+                  >
+                    {tag.title}
+                  </span>
+                </div>
+              )
+            )}
           </div>
         )
       }
