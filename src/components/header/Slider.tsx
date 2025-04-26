@@ -17,7 +17,7 @@ export const Slider = ({ featuredPosts }: SliderProps) => {
   return (
     <Swiper
       autoplay={{
-        delay: 3000,
+        delay: 4000,
         disableOnInteraction: false,
       }}
       effect={"fade"}

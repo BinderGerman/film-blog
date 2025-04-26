@@ -31,7 +31,7 @@ export default defineConfig({
       
     },
   },
-  /*experimental: {
+  experimental: {
     session: true,
-  }*/
+  }
 });
