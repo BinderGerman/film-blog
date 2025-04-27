@@ -53,9 +53,9 @@ const {
     <ClientRouter />
   </head>
 
-  <body class="bg-highlight-white">
+  <body class="bg-highlight-white min-h-screen flex flex-col">
     <NavbarSection />
-    <main data-pagefind-body>
+    <main data-pagefind-body class="flex-grow">
       <slot />
     </main>
     <FooterSection />
