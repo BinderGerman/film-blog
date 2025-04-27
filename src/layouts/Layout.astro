@@ -2,6 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import "../styles/global.css";
 import NavbarSection from "../sections/HeaderSection.astro";
+import FooterSection from '../sections/FooterSection.astro';
 
 interface Props {
   title: string;
@@ -57,6 +58,7 @@ const {
     <main data-pagefind-body>
       <slot />
     </main>
+    <FooterSection />
   </body>
 </html>
 
