@@ -48,11 +48,13 @@ const shareTitle = post.title;
         <img
           class="w-full h-auto object-cover md:w-[750px]"
           src={urlFor(post.mainImage).url()}
-          alt="Cover image"
+          alt={post.mainImage.alt || post.title}
+          loading="lazy"
+          decoding="async"
           transition:name="main-img"
         />
       ) : (
-        <div class="w-full h-[200px] bg-black md:w-[750px] md:h-[380px]" />
+        <div class="w-full h-auto bg-black md:w-[750px]" />
       )
     }
     <div class="px-4">

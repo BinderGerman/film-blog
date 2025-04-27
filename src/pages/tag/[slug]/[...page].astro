@@ -32,9 +32,11 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
             <a class="flex" href={`/post/${post.slug.current}`}>
               {post.mainImage ? (
                 <img
-                  class=""
-                  src={urlFor(post.mainImage).width(125).height(75).url()}
-                  alt={post.mainImage.alt || ""}
+                  class="w-32 h-16"
+                  src={urlFor(post.mainImage).url()}
+                  alt={post.mainImage.alt || post.title}
+                  loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <div class="" />

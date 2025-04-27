@@ -65,10 +65,10 @@ export default function MobileMenu({ categories }: MobileMenuProps) {
         </a>
         <a
           className="text-2xl font-semibold text-primary hover:text-highlight-red transition duration-200"
-          href="/sobre-mi"
+          href="/soy-alguien"
           onClick={() => setIsOpen(false)}
         >
-          Sobre mí
+          Soy alguien?
         </a>
       </div>
     </>
