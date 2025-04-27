@@ -46,7 +46,7 @@ const shareTitle = post.title;
     {
       post.mainImage ? (
         <img
-          class="w-full h-[200px] object-cover md:w-[750px] md:h-[380px]"
+          class="w-full h-auto object-cover md:w-[750px]"
           src={urlFor(post.mainImage).url()}
           alt="Cover image"
           transition:name="main-img"
