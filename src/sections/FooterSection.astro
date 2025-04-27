@@ -4,14 +4,18 @@ import { getCategories } from "../utils/database";
 const categories = await getCategories();
 ---
 
-<div class="w-full h-1 mt-12 bg-highlight-white" />
-<div class="w-full h-1 bg-highlight-red" />
-<div class="w-full h-1 bg-highlight-white" />
-<div class="w-full h-2 bg-highlight-gold" />
-<footer class="w-full h-auto sm:h-80 flex flex-col sm:flex-row bg-primary text-highlight-white">
-  <div class="w-full sm:w-3/5 bg-primary flex flex-col sm:flex-row items-center justify-around pt-10">
-    <div class="flex flex-col justify-between">
-      <div class="flex flex-col items-center mb-8">
+<div class="w-full h-1 mt-12 bg-highlight-white"></div>
+<div class="w-full h-1 bg-highlight-red"></div>
+<div class="w-full h-1 bg-highlight-white"></div>
+<div class="w-full h-2 bg-highlight-gold"></div>
+<footer
+  class="w-full h-auto md:h-80 flex flex-col lg:flex-row bg-primary text-highlight-white"
+>
+  <div
+    class="w-full lg:w-3/5 bg-primary flex flex-col md:flex-row items-center md:items-start justify-around lg:justify-between pt-10 lg:pl-4 pb-4 xl:justify-around"
+  >
+    <div class="flex flex-col h-full justify-between">
+      <div class="flex flex-col items-center md:items-start mb-9">
         <a href="/">
           <h2 class="text-highlight-gold text-4xl font-bold">
             Los Olvidos de Cronos
@@ -37,7 +41,7 @@ const categories = await getCategories();
         </ul>
       </div>
 
-      <span class="text-highlight-white font-bold text-sm mb-2 hidden sm:block mt-14"
+      <span class="text-highlight-white font-bold text-sm hidden md:block"
         >Copyright 2025 | Los Olvidos de Cronos: Todos los derechos reservados
       </span>
     </div>
@@ -59,13 +63,16 @@ const categories = await getCategories();
       </ul>
     </div>
   </div>
-  <div class="div-image w-full sm:w-2/5"></div>
+  <div class="div-image w-full md:w-2/5"></div>
+  <span class="text-highlight-white font-bold text-center text-sm pt-9 pb-2 md:hidden"
+    >Copyright 2025 | Los Olvidos de Cronos: Todos los derechos reservados
+  </span>
 </footer>
 
 <style>
   .div-image {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 75% 100%);
-    background-image: url('/ingrid-bergman.jpeg');
+    background-image: url("/ingrid-bergman.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 40% 40%;

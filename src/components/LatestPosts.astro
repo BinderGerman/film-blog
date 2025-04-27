@@ -9,7 +9,7 @@ interface Props {
 const { latestPosts } = Astro.props;
 ---
 
-<aside class="p-10 mx-auto bg-[#f9f9f9] rounded-lg">
+<aside class="p-10 mx-auto bg-[#f9f9f9] rounded-lg max-w-[540px]">
   <h2 class="text-3xl text-center font-semibold mb-12">Últimos Artículos</h2>
   <ol class="list-none space-y-16 relative">
     {latestPosts.map((post, index) => (
