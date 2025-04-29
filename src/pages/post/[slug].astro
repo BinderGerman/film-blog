@@ -33,7 +33,7 @@ const tagsWithPostCount = await Promise.all(
   })
 );
 
-const shareUrl = `https://film-blog.pages.dev/post/${post.slug}`;
+const shareUrl = `https://film-blog.pages.dev/post/${post.slug.current}`;
 const shareTitle = post.title;
 ---
 
