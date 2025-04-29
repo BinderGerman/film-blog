@@ -35,12 +35,13 @@ const tagsWithPostCount = await Promise.all(
 
 const shareUrl = `https://film-blog.pages.dev/post/${post.slug.current}`;
 const shareTitle = post.title;
+const fallbackImage = 'https://film-blog.pages.dev/og.png'
 ---
 
 <Layout
   title={post.title!}
   description={post.excerpt}
-  image={post.mainImage ? urlFor(post.mainImage).url() : undefined}
+  image={post.mainImage ? urlFor(post.mainImage).url() : fallbackImage}
 >
   <section class="flex flex-col max-w-[750px] px-4 m-auto my-24 md:my-16">
     {
