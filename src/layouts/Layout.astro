@@ -1,8 +1,10 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import "../styles/global.css";
-import NavbarSection from "../sections/HeaderSection.astro";
+import HeaderSection from "../sections/HeaderSection.astro";
 import FooterSection from '../sections/FooterSection.astro';
+import FooterSectionTwo from '../sections/FooterSectionTwo.astro';
+import HeaderSectionTwo from '../sections/HeaderSectionTwo.astro';
 
 interface Props {
   title: string;
@@ -54,11 +56,11 @@ const {
   </head>
 
   <body class="bg-highlight-white min-h-screen flex flex-col">
-    <NavbarSection />
+    <HeaderSection />
     <main data-pagefind-body class="flex-grow">
       <slot />
     </main>
-    <FooterSection />
+    <FooterSectionTwo />
   </body>
 </html>
 

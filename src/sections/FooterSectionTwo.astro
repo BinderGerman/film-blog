@@ -1,0 +1,91 @@
+---
+import { getCategories } from "../utils/database";
+
+const categories = await getCategories();
+---
+
+<div class="w-full h-1 mt-12 bg-highlight-white"></div> <!-- línea blanca sólida -->
+<div class="w-full h-1 bg-gradient-to-r from-[var(--color-highlight-red)] via-[var(--color-highlight-red)] to-transparent"></div> <!-- rojo degradado -->
+<div class="w-full h-1 bg-highlight-white"></div> <!-- línea blanca sólida -->
+<div class="w-full h-2 bg-gradient-to-r from-[var(--color-highlight-gold)] via-[var(--color-highlight-gold)] to-transparent"></div> <!-- dorado degradado -->
+
+<footer
+  class="w-full h-auto md:h-80 flex flex-col lg:flex-row bg-primary text-highlight-white"
+>
+  <div
+    class="w-full lg:w-3/5 bg-primary flex flex-col md:flex-row items-center md:items-start justify-around lg:justify-between pt-10 lg:pl-4 pb-4 xl:justify-around"
+  >
+    <div class="flex flex-col h-full justify-between">
+      <div class="flex flex-col items-center md:items-start mb-9">
+        <a href="/">
+          <h2 class="text-highlight-gold text-4xl font-bold">
+            Los Olvidos de Cronos
+          </h2>
+        </a>
+        <h3 class="text-lg mt-4 mb-4">Podes seguirme en redes (si querés):</h3>
+        <ul class="flex justify-start gap-6">
+          <li class="w-6 mt-1">
+            <a href="https://www.instagram.com/romanganuza/" target="_blank">
+              <img src="/social_media_instagram.svg" alt="Instagram" />
+            </a>
+          </li>
+          <li class="w-6 mt-1">
+            <a href="https://www.facebook.com/roman.ganuza.98" target="_blank">
+              <img src="/social_media_facebook.svg" alt="Facebook" />
+            </a>
+          </li>
+          <li class="w-8">
+            <a href="mailto:romanganuza@gmail.com" target="_blank">
+              <img src="/social_media_email.svg" alt="Email" />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <span class="text-highlight-white font-bold text-sm hidden md:block"
+        >Copyright 2025 | Los Olvidos de Cronos: Todos los derechos reservados
+      </span>
+    </div>
+
+    <div>
+      <h3 class="text-2xl font-bold">Categorías</h3>
+      <ul class="flex flex-col p-2 space-y-3">
+        {
+          categories.map((category) => (
+            <li class="w-full">
+              <a
+                href={`/categoria/${category.slug.current}`}
+                class="block w-full whitespace-nowrap font-semibold text-highlight-white hover:text-highlight-red transition duration-200"
+              >
+                {category.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="div-image w-full md:w-2/5"></div>
+
+  <span class="text-highlight-white font-bold text-center text-sm pt-9 pb-2 md:hidden"
+    >Copyright 2025 | Los Olvidos de Cronos: Todos los derechos reservados
+  </span>
+</footer>
+
+<style>
+  .div-image {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 75% 100%);
+    background-image: url("/ingrid-bergman.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 40% 40%;
+  }
+</style>
+
+    
+  
+  
+  
+  
+  
