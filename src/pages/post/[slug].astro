@@ -39,6 +39,7 @@ const fallbackImage = 'https://film-blog.pages.dev/og.png'
 ---
 
 <Layout
+  url={post.slug.current}
   title={post.title!}
   description={post.excerpt}
   image={post.mainImage ? urlFor(post.mainImage).url() : fallbackImage}
