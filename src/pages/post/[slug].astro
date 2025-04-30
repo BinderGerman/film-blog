@@ -12,7 +12,6 @@ export const prerender = true;
 
 export async function getStaticPaths() {
   const posts = await getPosts();
-
   return posts.map((post) => ({
     params: { slug: post.slug.current },
   }));
@@ -26,20 +25,16 @@ const post = await getPost(slug);
 const tagsWithPostCount = await Promise.all(
   (post.tags || []).map(async (tag) => {
     const postCount = await getTotalPostsByTag(tag.slug.current);
-    return {
-      ...tag,
-      postCount,
-    };
+    return { ...tag, postCount };
   })
 );
 
 const shareUrl = `https://film-blog.pages.dev/post/${post.slug.current}`;
 const shareTitle = post.title;
-const fallbackImage = 'https://film-blog.pages.dev/og.png'
+const fallbackImage = 'https://film-blog.pages.dev/og.png';
 ---
 
 <Layout
-  url=`post/${post.slug.current}`
   title={post.title!}
   description={post.excerpt}
   image={post.mainImage ? urlFor(post.mainImage).url() : fallbackImage}
@@ -60,59 +55,28 @@ const fallbackImage = 'https://film-blog.pages.dev/og.png'
       )
     }
     <div class="px-4">
-      <h1
-        class="font-sans text-3xl md:text-5xl leading-tight md:leading-tight font-extrabold my-6 md:mt-16 md:mb-0 tracking-tight"
-        data-pagefind-meta="title"
-      >
-        {post.title}
-      </h1>
-      <h2
-        class="font-serif text-xl md:text-2xl leading-relaxed font-normal mt-0 mb-6"
-        data-pagefind-meta="Subtítulo"
-      >
-        {post.excerpt}
-      </h2>
-      <p
-        class="font-sans font-semibold text-sm md:text-lg leading-snug mt-4 md:mt-0"
-        data-pagefind-ignore
-      >
-        {formatDate(post._createdAt)}
-      </p>
+      <h1 class="font-sans text-3xl md:text-5xl leading-tight font-extrabold my-6 tracking-tight" data-pagefind-meta="title">{post.title}</h1>
+      <h2 class="font-serif text-xl md:text-2xl font-normal mb-6" data-pagefind-meta="Subtítulo">{post.excerpt}</h2>
+      <p class="font-sans font-semibold text-sm md:text-lg mt-4" data-pagefind-ignore>{formatDate(post._createdAt)}</p>
       <ShareButtons url={shareUrl} title={shareTitle} />
-      <div
-        class="font-serif font-normal text-lg md:text-xl leading-relaxed tracking-tight mt-10 md:mt-16 prose prose-a:text-blue-600 prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6"
-        data-pagefind-ignore
-      >
+      <div class="font-serif text-lg md:text-xl mt-10 prose" data-pagefind-ignore>
         <PortableText value={post.body} />
       </div>
       <ShareButtons url={shareUrl} title={shareTitle} />
       {
         post.tags && post.tags.length > 0 && (
           <div class="mt-8">
-            <h3
-              class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4"
-              data-pagefind-ignore
-            >
-              Temas Relacionados
-            </h3>
+            <h3 class="text-primary text-lg font-semibold border-b-2 pb-1 mb-4" data-pagefind-ignore>Temas Relacionados</h3>
             {tagsWithPostCount.map((tag) =>
               tag.postCount > 1 ? (
                 <a class="flex my-2" href={`/tag/${tag.slug.current}`}>
-                  <span
-                    class="bg-highlight-gold text-sm text-highlight-white hover:bg-primary transition-all duration-200 rounded px-2 py-1 mx-0.5"
-                    data-pagefind-meta="Etiquetas"
-                    data-pagefind-meta-append
-                  >
+                  <span class="bg-highlight-gold text-sm text-highlight-white hover:bg-primary transition-all duration-200 rounded px-2 py-1 mx-0.5" data-pagefind-meta="Etiquetas" data-pagefind-meta-append>
                     {tag.title}
                   </span>
                 </a>
               ) : (
                 <div class="flex my-2">
-                  <span
-                    class="border border-highlight-gold text-sm text-highlight-gold rounded px-2 py-1 mx-0.5"
-                    data-pagefind-meta="Etiquetas"
-                    data-pagefind-meta-append
-                  >
+                  <span class="border border-highlight-gold text-sm text-highlight-gold rounded px-2 py-1 mx-0.5" data-pagefind-meta="Etiquetas" data-pagefind-meta-append>
                     {tag.title}
                   </span>
                 </div>
@@ -124,3 +88,4 @@ const fallbackImage = 'https://film-blog.pages.dev/og.png'
     </div>
   </section>
 </Layout>
+
