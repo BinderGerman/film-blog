@@ -4,10 +4,11 @@ import { getCategories } from "../utils/database";
 const categories = await getCategories();
 ---
 
-<div class="w-full h-1 mt-12 bg-highlight-white"></div>
-<div class="w-full h-1 bg-highlight-red"></div>
-<div class="w-full h-1 bg-highlight-white"></div>
-<div class="w-full h-2 bg-highlight-gold"></div>
+<div class="w-full h-1 mt-12 bg-highlight-white"></div> 
+<div class="w-full h-1 bg-gradient-to-l from-[var(--color-highlight-red)] via-[var(--color-highlight-red)] to-transparent"></div> <!-- rojo degradado -->
+<div class="w-full h-1 bg-highlight-white"></div> 
+<div class="w-full h-2 bg-gradient-to-l from-[var(--color-highlight-gold)] via-[var(--color-highlight-gold)] to-transparent"></div> <!-- dorado degradado -->
+
 <footer
   class="w-full h-auto md:h-80 flex flex-col lg:flex-row bg-primary text-highlight-white"
 >
@@ -34,7 +35,7 @@ const categories = await getCategories();
             </a>
           </li>
           <li class="w-8">
-            <a href="maito:romanganuza@gmail.com" target="_blank">
+            <a href="mailto:romanganuza@gmail.com" target="_blank">
               <img src="/social_media_email.svg" alt="Email" />
             </a>
           </li>
@@ -45,9 +46,10 @@ const categories = await getCategories();
         >Copyright 2025 | Los Olvidos de Cronos: Todos los derechos reservados
       </span>
     </div>
+
     <div>
       <h3 class="text-2xl font-bold">Categorías</h3>
-      <ul class="flex flex-col p-2 space-y-3">
+      <ul class="flex flex-col pt-2 space-y-3">
         {
           categories.map((category) => (
             <li class="w-full">
@@ -63,8 +65,10 @@ const categories = await getCategories();
       </ul>
     </div>
   </div>
-  <div class="div-image w-full md:w-2/5"></div>
-  <span class="text-highlight-white font-bold text-center text-sm pt-9 pb-2 md:hidden"
+
+  <div class="div-image hidden w-full lg:block lg:w-2/5"></div>
+
+  <span class="text-highlight-white font-bold text-center text-sm pt-9 pb-2 px-2 md:hidden"
     >Copyright 2025 | Los Olvidos de Cronos: Todos los derechos reservados
   </span>
 </footer>

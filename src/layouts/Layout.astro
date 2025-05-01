@@ -2,7 +2,7 @@
 import { ClientRouter } from 'astro:transitions';
 import "../styles/global.css";
 import HeaderSection from "../sections/HeaderSection.astro";
-import FooterSectionTwo from '../sections/FooterSectionTwo.astro';
+import FooterSection from '../sections/FooterSection.astro';
 
 interface Props {
   title: string;
@@ -64,7 +64,7 @@ const canonicalUrl = `https://film-blog.pages.dev${Astro.url.pathname}`;
     <main data-pagefind-body class="flex-grow">
       <slot />
     </main>
-    <FooterSectionTwo />
+    <FooterSection />
   </body>
 </html>
 

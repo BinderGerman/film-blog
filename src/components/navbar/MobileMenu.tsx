@@ -58,17 +58,17 @@ export default function MobileMenu({ categories }: MobileMenuProps) {
         ))}
         <a
           className="text-2xl font-semibold text-primary hover:text-highlight-red transition duration-200"
-          href="/contacto"
-          onClick={() => setIsOpen(false)}
-        >
-          Contacto
-        </a>
-        <a
-          className="text-2xl font-semibold text-primary hover:text-highlight-red transition duration-200"
           href="/soy-alguien"
           onClick={() => setIsOpen(false)}
         >
           Soy alguien?
+        </a>
+        <a
+          className="text-2xl font-semibold text-primary hover:text-highlight-red transition duration-200"
+          href="/contacto"
+          onClick={() => setIsOpen(false)}
+        >
+          Contacto
         </a>
       </div>
     </>

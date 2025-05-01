@@ -2,11 +2,10 @@
 import { getPostsGroupedByCategory } from "../utils/database";
 
 import CardGrid from "../components/CardGrid.astro";
-import CardGridTwo from "../components/CardGridTwo.astro";
 
 const categoriesWithPosts = await getPostsGroupedByCategory();
 ---
 
 <section class="w-full lg:w-2/3">
-  <CardGridTwo categoriesWithPosts={categoriesWithPosts} />
+  <CardGrid categoriesWithPosts={categoriesWithPosts} />
 </section>
