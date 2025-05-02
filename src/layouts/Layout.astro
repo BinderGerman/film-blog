@@ -1,8 +1,14 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
+
+/* Fuentes instaladas desde FontSource */
+import '@fontsource-variable/inter'
+import '@fontsource/pt-serif';
+
+
 import HeaderSection from "../sections/HeaderSection.astro";
-import FooterSection from '../sections/FooterSection.astro';
+import FooterSection from "../sections/FooterSection.astro";
 
 interface Props {
   title: string;
@@ -44,13 +50,6 @@ const canonicalUrl = `https://film-blog.pages.dev${Astro.url.pathname}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Tipografías -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Inter:wght@500;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
 
     <!-- Buscador -->
     <script is:inline src="/pagefind/pagefind.js"></script>
