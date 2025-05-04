@@ -9,19 +9,25 @@ export default function DesktopSearchBar() {
   useEffect(() => {
     const event = new CustomEvent("searchBarMenuToggle", { detail: isOpen });
     window.dispatchEvent(event);
-    console.log("soy el primer useEffect");
   }, [isOpen]);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
-    }
-    console.log("soy el segundo useEffect");
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      console.log("soy el segundo useEffect");
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
