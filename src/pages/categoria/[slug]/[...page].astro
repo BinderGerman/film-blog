@@ -38,7 +38,7 @@ const posts = await getPostsByCategorySlug(
     >
       {
         posts.map((post) => (
-          <article class="border rounded shadow hover:shadow-md transition bg-primary ">
+          <article class="border rounded-md shadow hover:shadow-md transition bg-primary ">
             <a href={`/post/${post.slug.current}`}>
               {post.mainImage ? (
                 <img
@@ -73,7 +73,7 @@ const posts = await getPostsByCategorySlug(
                       ? `/categoria/${slug}`
                       : `/categoria/${slug}/${currentPage - 1}`
                   }
-                  class="px-3 py-1 border rounded hover:bg-gray-200"
+                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
                 >
                   Anterior
                 </a>
@@ -91,7 +91,7 @@ const posts = await getPostsByCategorySlug(
                 <li>
                   <a
                     href={href}
-                    class={`px-3 py-1 border rounded ${isActive ? "bg-primary text-white" : "hover:bg-gray-200"}`}
+                    class={`px-3 py-1 border rounded-md ${isActive ? "bg-primary text-white" : "hover:bg-gray-200"}`}
                   >
                     {pageNum}
                   </a>
@@ -103,7 +103,7 @@ const posts = await getPostsByCategorySlug(
               <li>
                 <a
                   href={`/categoria/${slug}/${currentPage + 1}`}
-                  class="px-3 py-1 border rounded hover:bg-gray-200"
+                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
                 >
                   Siguiente
                 </a>

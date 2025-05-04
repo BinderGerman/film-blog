@@ -9,14 +9,14 @@ interface Props {
 const { categories } = Astro.props;
 ---
 
-<aside class="p-10 mx-auto bg-[#f9f9f9] rounded-lg mt-8 max-w-[540px]">
+<aside class="p-10 mx-auto bg-[#f9f9f9] rounded-md mt-8 max-w-[540px]">
   <h2 class="text-3xl text-center font-semibold mb-12">Categorías</h2>
   <ul class="list-none space-y-8 relative">
     {categories.map((category) => (
-      <li class="relative rounded text-white py-5 overflow-hidden">
+      <li class="relative rounded-md text-white py-5 overflow-hidden">
         {category.mainImage && (
           <div
-            class="absolute inset-0 bg-cover bg-center rounded"
+            class="absolute inset-0 bg-cover bg-center rounded-md"
             style={`background-image: linear-gradient(rgba(18, 21, 39, 0.3), rgba(18, 21, 39, 0.95)), url(${urlFor(category.mainImage).url()})`}
           />
         )}

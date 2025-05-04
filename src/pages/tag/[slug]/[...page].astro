@@ -25,10 +25,10 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
   <TagBanner title={tag?.title} />
 
   <section class="mt-20 m-auto max-w-[1180px] 2xl:max-w-[1280px]">
-    <div class="flex-col p-10 mx-auto bg-[#f9f9f9] rounded-lg mt-8">
+    <div class="flex-col p-10 mx-auto bg-[#f9f9f9] rounded-md mt-8">
       {
         posts.map((post) => (
-          <article class="rounded shadow hover:shadow-md transition mb-8">
+          <article class="rounded-md shadow hover:shadow-md transition mb-8">
             <a class="flex" href={`/post/${post.slug.current}`}>
               {post.mainImage ? (
                 <img
@@ -67,7 +67,7 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
                       ? `/categoria/${slug}`
                       : `/categoria/${slug}/${currentPage - 1}`
                   }
-                  class="px-3 py-1 border rounded hover:bg-gray-200"
+                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
                 >
                   Anterior
                 </a>
@@ -85,7 +85,7 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
                 <li>
                   <a
                     href={href}
-                    class={`px-3 py-1 border rounded ${isActive ? "bg-primary text-white" : "hover:bg-gray-200"}`}
+                    class={`px-3 py-1 border rounded-md ${isActive ? "bg-primary text-white" : "hover:bg-gray-200"}`}
                   >
                     {pageNum}
                   </a>
@@ -97,7 +97,7 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
               <li>
                 <a
                   href={`/categoria/${slug}/${currentPage + 1}`}
-                  class="px-3 py-1 border rounded hover:bg-gray-200"
+                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
                 >
                   Siguiente
                 </a>

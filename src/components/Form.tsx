@@ -62,7 +62,7 @@ export const Form = () => {
           Tu nombre
         </label>
         <input
-          className="w-full p-3 rounded bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red"
+          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red"
           type="text"
           placeholder="Nombre"
           {...register("nombre", { 
@@ -81,7 +81,7 @@ export const Form = () => {
           Correo electrónico
         </label>
         <input
-          className="w-full p-3 rounded bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red"
+          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red"
           type="email"
           placeholder="ejemplo@correo.com"
           {...register("email", { 
@@ -102,7 +102,7 @@ export const Form = () => {
           Mensaje
         </label>
         <textarea
-          className="w-full p-3 rounded bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red resize-none overflow-y-auto"
+          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red resize-none overflow-y-auto"
           placeholder="Hablemos"
           rows={6}
           {...register("mensaje", { 
@@ -118,7 +118,7 @@ export const Form = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full mt-4 p-3 rounded-lg bg-highlight-red text-highlight-white font-bold text-lg hover:bg-primary hover:text-highlight-white transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full mt-4 p-3 rounded-md-lg bg-highlight-red text-highlight-white font-bold text-lg hover:bg-primary hover:text-highlight-white transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Enviando...' : 'Enviar'}
       </button>
