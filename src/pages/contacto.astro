@@ -4,31 +4,29 @@ import { Form } from "../components/Form";
 ---
 
 <Layout title="Contacto">
-  <section class="m-auto max-w-[740px] w-full lg:my-32 my-20 px-6">
-    <div class="flex flex-col items-center gap-10 bg-primary rounded-lg p-10">
-        <h2 class="text-3xl font-bold text-highlight-white ">Ponete en contacto</h2>
-        <p class="text-lg text-highlight-white mb-4">
-            Escribime tu mensaje y te responderé a la brevedad.
-          </p>
-          <Form client:load />
-          <h3 class="mt-6 text-lg font-sans text-highlight-white font-semibold">También podés encontrarme en:</h3>
-            <ul class="flex gap-6">
-              <li class="w-6">
-                <a href="https://www.instagram.com/romanganuza/" target="_blank">
-                  <img src="/social_media_instagram.svg" alt="Instagram" />
-                </a>
-              </li>
-              <li class="w-6">
-                <a href="https://www.facebook.com/roman.ganuza.98" target="_blank">
-                  <img src="/social_media_facebook.svg" alt="Facebook" />
-                </a>
-              </li>
-              <li class="w-6">
-                <a href="mailto:romanganuza@gmail.com" target="_blank">
-                  <img src="/social_media_email.svg" alt="Email" />
-                </a>
-              </li>
-            </ul>
+  <section class="m-auto max-w-[1180px] 2xl:max-w-[1280px] mt-36 px-6">
+    <div
+      class="flex flex-col md:flex-row items-stretch bg-[#f9f9f9] rounded-lg overflow-hidden"
+    >
+      <div class="p-6 sm:p-10 w-full md:w-1/2">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center text-primary">
+          Ponete en contacto
+        </h2>
+        <p class="text-base sm:text-lg mb-4 text-center text-primary">
+          Escríbeme y te responderé
+        </p>
+        <Form client:load />
+      </div>
+      <div class="relative w-full md:w-1/2 min-h-[400px] md:min-h-[600px]">
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={`background-image: linear-gradient(rgba(18, 21, 39, 0.3), rgba(18, 21, 39, 0.95)), url('/ingrid-bergman-and-cary-grant.png')`}
+        >
+        </div>
+        <span class="absolute bottom-2 right-4 text-highlight-white z-10 text-sm sm:text-base">
+          - <strong>Ingrid Bergman</strong> y <strong>Cary Grant</strong> "Indiscreet" (1958)
+        </span>
+      </div>
     </div>
   </section>
 </Layout>

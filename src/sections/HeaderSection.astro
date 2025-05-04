@@ -1,8 +1,9 @@
 ---
+import { getCategories } from '../utils/database';
+
 import MobileMenu from '../components/navbar/MobileMenu';
 import ScrollHideHeader from '../components/navbar/ScrollHideHeader';
 import DesktopCategoriesMenu from '../components/navbar/DesktopCategoriesMenu';
-import { getCategories } from '../utils/database';
 import DesktopSearchBar from '../components/navbar/DesktopSearchBar';
 
 const categories = await getCategories();
@@ -13,7 +14,7 @@ const categories = await getCategories();
 <header class="fixed top-0 left-0 w-full z-50 bg-primary shadow transition-transform duration-300" id="site-header">
   <div class="container mx-auto flex items-center justify-between px-4 py-4 bg-primary">
     <a href="/">
-      <h1 class="text-2xl font-bold text-highlight-gold">Los Olvidos de Cronos</h1>
+      <h1 class="text-2xl font-bold text-highlight-gold">Los olvidos de Cronos</h1>
     </a>
 
     <!-- Menú Desktop -->

@@ -1,30 +1,58 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Soy Alguien">
-  <section class="m-auto max-w-[1180px] 2xl:max-w-[1280px] w-full lg:my-32 my-20 px-6">
-    <div class="bg-primary rounded-lg p-10 grid lg:grid-cols-2 gap-10 items-center">
-      <div class="flex justify-center">
-        <Image 
-          src="/roman-ganuza.jpeg" 
-          width={400} 
-          height={534} 
-          alt="Foto de Roman Ganuza" 
-          class="w-full max-w-[400px] h-auto rounded-lg shadow-lg grayscale object-[50%_70%]"
-        />
+  <section class="m-auto max-w-[1180px] 2xl:max-w-[1280px] mt-36 px-6">
+    <div
+      class="flex flex-col lg:flex-row items-stretch bg-[#f9f9f9] rounded-lg overflow-hidden"
+    >
+      <div class="relative w-full lg:w-1/2 min-h-[400px] md:min-h-[600px]">
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat filter grayscale"
+          style={`background-image: url('/roman-ganuza.jpeg')`}
+        >
+        </div>
       </div>
-      <div class="text-highlight-gold flex flex-col justify-center font-serif text-lg md:text-xl leading-[1.75] tracking-tight prose max-w-[600px] mx-auto prose-a:text-blue-600 prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6">
-
-        <p>Me llaman Román Ganuza, de lo que infiero que ese debe ser mi nombre.</p>
-        <p>Nací en 1958, me encuentro con vida ahora, y supongo que voy a morir en algún momento porque no me creo más que nadie.</p>
-        <p>Leí psicología, filosofía, lingüística, semiología, literatura, crítica literaria, crítica cinematográfica, historia política, historia del arte, esoterismo y teología, pero nunca me recibí de nada.</p>
-        <p>Iba a poner que me gusta esto o lo otro, pero pienso que no es relevante.</p>
+      <div
+        class="lg:w-1/2 p-8 flex flex-col justify-center font-serif text-lg md:text-xl leading-[1.75] tracking-tight prose max-w-[600px] mx-auto prose-a:text-primary prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-sans font-bold text-primary text-center mb-10"
+        >
+          Me presento
+        </h2>
+        <p>
+          Me llaman Román Ganuza, de lo que infiero que ese debe ser mi nombre.
+        </p>
+        <p>
+          Nací en 1958, me encuentro con vida ahora, y supongo que voy a morir
+          en algún momento porque no me creo más que nadie.
+        </p>
+        <p>
+          Leí psicología, filosofía, lingüística, semiología, literatura,
+          crítica literaria, crítica cinematográfica, historia política,
+          historia del arte, esoterismo y teología, pero nunca me recibí de
+          nada.
+        </p>
+        <p>
+          Iba a poner que me gusta esto o lo otro, pero pienso que no es
+          relevante.
+        </p>
         <p>No soy escritor, solo soy un tipo que a veces escribe.</p>
-        <p>Me encantaría que lean mis notas, pero creo haberlas hecho, ante todo, para mí, para entender de qué estoy hablando.</p>
-        <p>Y creo además que entender es un placer supremo, aunque no sirva para cambiar nada.</p>
-        <p>Ah… me olvidaba, me encanta contar que soy peronista e hincha de Estudiantes de La Plata. Esto sí lo quiero exhibir, pagando con gusto los costos.</p>
+        <p>
+          Me encantaría que lean mis notas, pero creo haberlas hecho, ante todo,
+          para mí, para entender de qué estoy hablando.
+        </p>
+        <p>
+          Y creo además que entender es un placer supremo, aunque no sirva para
+          cambiar nada.
+        </p>
+        <p>
+          Ah… me olvidaba, me encanta contar que soy peronista e hincha de
+          Estudiantes de La Plata. Esto sí lo quiero exhibir, pagando con gusto
+          los costos.
+        </p>
       </div>
     </div>
   </section>

@@ -42,7 +42,7 @@ export const Form = () => {
         </label>
         <textarea
           className="w-full p-3 rounded bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red"
-          placeholder="¿Sobre qué te gustaría hablar?"
+          placeholder="Hablemos"
           rows={6}
           {...register("mensaje", { required: true, minLength: 10 })}
         />
@@ -50,7 +50,7 @@ export const Form = () => {
 
       <button
         type="submit"
-        className="w-full mt-4 p-3 rounded bg-highlight-red text-white font-bold text-lg hover:bg-red-700 transition"
+        className="w-full mt-4 p-3 rounded-lg bg-highlight-red text-highlight-white font-bold text-lg hover:bg-primary  hover:text-highlight-white transition-all duration-300 ease-in-out"
       >
         Enviar
       </button>
