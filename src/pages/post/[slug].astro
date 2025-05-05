@@ -54,8 +54,8 @@ const fallbackImage = 'https://film-blog.pages.dev/og.png';
       )
     }
     <div class="px-4">
-      <h1 class="font-sans text-3xl md:text-5xl leading-tight font-extrabold my-6 tracking-tight" data-pagefind-meta="title">{post.title}</h1>
-      <h2 class="font-serif text-xl md:text-2xl font-normal mb-6" data-pagefind-meta="Subtítulo">{post.excerpt}</h2>
+      <h1 class="font-sans text-primary text-3xl md:text-5xl leading-tight font-extrabold my-6 tracking-tight" data-pagefind-meta="title">{post.title}</h1>
+      <h2 class="font-serif text-highlight-gold text-xl md:text-2xl font-medium mb-6" data-pagefind-meta="Subtítulo">{post.excerpt}</h2>
       <p class="font-sans font-semibold text-sm md:text-lg mt-4" data-pagefind-ignore>{formatDate(post._createdAt)}</p>
       <ShareButtons url={shareUrl} title={shareTitle} />
       <div class="font-serif text-lg md:text-xl mt-10 prose leading-[1.75] tracking-tight prose-a:text-primary prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-4 prose-blockquote:ml-6" data-pagefind-ignore>
