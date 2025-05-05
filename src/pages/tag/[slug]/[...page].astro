@@ -68,7 +68,7 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
                       ? `/categoria/${slug}`
                       : `/categoria/${slug}/${currentPage - 1}`
                   }
-                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
+                  class="px-3 py-1 border border-highlight-red text-highlight-red rounded-md hover:bg-gray-200"
                 >
                   Anterior
                 </a>
@@ -86,7 +86,7 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
                 <li>
                   <a
                     href={href}
-                    class={`px-3 py-1 border rounded-md ${isActive ? "bg-primary text-white" : "hover:bg-gray-200"}`}
+                    class={`px-3 py-1 border border-highlight-red rounded-md ${isActive ? "bg-highlight-red text-highlight-white" : "hover:bg-gray-200 text-highlight-red"}`}
                   >
                     {pageNum}
                   </a>
@@ -98,7 +98,7 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
               <li>
                 <a
                   href={`/categoria/${slug}/${currentPage + 1}`}
-                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
+                  class="px-3 py-1 border border-highlight-red text-highlight-red rounded-md hover:bg-gray-200"
                 >
                   Siguiente
                 </a>

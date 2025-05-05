@@ -62,7 +62,7 @@ export const Form = () => {
           Tu nombre
         </label>
         <input
-          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-gold"
+          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red"
           type="text"
           placeholder="Nombre"
           {...register("nombre", { 
@@ -72,7 +72,7 @@ export const Form = () => {
           })}
         />
         {errors.nombre && (
-          <span className="text-red-500 text-sm mt-1">{errors.nombre.message}</span>
+          <span className="text-highlight-red text-sm mt-1">{errors.nombre.message}</span>
         )}
       </div>
 
@@ -81,7 +81,7 @@ export const Form = () => {
           Correo electrónico
         </label>
         <input
-          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-gold"
+          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red"
           type="email"
           placeholder="ejemplo@correo.com"
           {...register("email", { 
@@ -93,7 +93,7 @@ export const Form = () => {
           })}
         />
         {errors.email && (
-          <span className="text-red-500 text-sm mt-1">{errors.email.message}</span>
+          <span className="text-hi text-sm mt-1">{errors.email.message}</span>
         )}
       </div>
 
@@ -102,7 +102,7 @@ export const Form = () => {
           Mensaje
         </label>
         <textarea
-          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-gold resize-none overflow-y-auto"
+          className="w-full p-3 rounded-md bg-white text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-highlight-red resize-none overflow-y-auto"
           placeholder="Hablemos"
           rows={6}
           {...register("mensaje", { 
@@ -111,14 +111,14 @@ export const Form = () => {
           })}
         />
         {errors.mensaje && (
-          <span className="text-red-500 text-sm mt-1">{errors.mensaje.message}</span>
+          <span className="text-hi text-sm mt-1">{errors.mensaje.message}</span>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full mt-4 p-3 rounded-md bg-highlight-gold text-highlight-white font-bold text-lg hover:bg-highlight-red hover:text-highlight-white transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full mt-4 p-3 rounded-md bg-highlight-red text-highlight-white font-bold text-lg hover:bg-red-800 hover:text-highlight-white transition-all duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Enviando...' : 'Enviar'}
       </button>

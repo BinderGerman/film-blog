@@ -76,7 +76,7 @@ const posts = await getPostsByCategorySlug(
                       ? `/categoria/${slug}`
                       : `/categoria/${slug}/${currentPage - 1}`
                   }
-                  class="px-3 py-1 border border-highlight-gold text-highlight-gold rounded-md hover:bg-gray-200"
+                  class="px-3 py-1 border border-highlight-red text-highlight-red rounded-md hover:bg-gray-200"
                 >
                   Anterior
                 </a>
@@ -94,7 +94,7 @@ const posts = await getPostsByCategorySlug(
                 <li>
                   <a
                     href={href}
-                    class={`px-3 py-1 border border-highlight-gold rounded-md ${isActive ? "bg-highlight-gold text-highlight-white" : "hover:bg-gray-200 text-highlight-gold"}`}
+                    class={`px-3 py-1 border border-highlight-red rounded-md ${isActive ? "bg-highlight-red text-highlight-white" : "hover:bg-gray-200 text-highlight-red"}`}
                   >
                     {pageNum}
                   </a>
@@ -106,7 +106,7 @@ const posts = await getPostsByCategorySlug(
               <li>
                 <a
                   href={`/categoria/${slug}/${currentPage + 1}`}
-                  class="px-3 py-1 border border-highlight-gold text-highlight-gold rounded-md hover:bg-gray-200"
+                  class="px-3 py-1 border border-highlight-red text-highlight-red rounded-md hover:bg-gray-200"
                 >
                   Siguiente
                 </a>
