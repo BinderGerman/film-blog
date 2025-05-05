@@ -46,12 +46,11 @@ const fallbackImage = 'https://film-blog.pages.dev/og.png';
           class="w-full h-auto object-cover md:w-[750px]"
           src={urlFor(post.mainImage).url()}
           alt={post.mainImage.alt || post.title}
-          loading="lazy"
           decoding="async"
           transition:name={`${post.slug.current}-main-img`}
         />
       ) : (
-        <div class="w-full h-auto bg-black md:w-[750px]" />
+        <div class="w-full h-auto bg-[#f9f9f9] md:w-[750px]" />
       )
     }
     <div class="px-4">
@@ -70,7 +69,7 @@ const fallbackImage = 'https://film-blog.pages.dev/og.png';
             {tagsWithPostCount.map((tag) =>
               tag.postCount > 1 ? (
                 <a class="flex my-2" href={`/tag/${tag.slug.current}`}>
-                  <span class="bg-highlight-gold text-sm text-highlight-white hover:bg-primary transition-all duration-200 rounded-md px-2 py-1 mx-0.5" data-pagefind-meta="Etiquetas" data-pagefind-meta-append>
+                  <span class="bg-highlight-gold text-sm text-highlight-white hover:bg-highlight-red transition-all duration-200 rounded-md px-2 py-1 mx-0.5" data-pagefind-meta="Etiquetas" data-pagefind-meta-append>
                     {tag.title}
                   </span>
                 </a>

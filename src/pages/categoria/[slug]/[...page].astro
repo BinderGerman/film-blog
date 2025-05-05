@@ -45,6 +45,9 @@ const posts = await getPostsByCategorySlug(
                   class=""
                   src={urlFor(post.mainImage).width(500).height(300).url()}
                   alt={post.mainImage.alt || ""}
+                  transition:name={`${post.slug.current}-main-img`}
+                  loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <div class="" />
@@ -73,7 +76,7 @@ const posts = await getPostsByCategorySlug(
                       ? `/categoria/${slug}`
                       : `/categoria/${slug}/${currentPage - 1}`
                   }
-                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
+                  class="px-3 py-1 border border-highlight-gold text-highlight-gold rounded-md hover:bg-gray-200"
                 >
                   Anterior
                 </a>
@@ -91,7 +94,7 @@ const posts = await getPostsByCategorySlug(
                 <li>
                   <a
                     href={href}
-                    class={`px-3 py-1 border rounded-md ${isActive ? "bg-primary text-white" : "hover:bg-gray-200"}`}
+                    class={`px-3 py-1 border border-highlight-gold rounded-md ${isActive ? "bg-highlight-gold text-highlight-white" : "hover:bg-gray-200 text-highlight-gold"}`}
                   >
                     {pageNum}
                   </a>
@@ -103,7 +106,7 @@ const posts = await getPostsByCategorySlug(
               <li>
                 <a
                   href={`/categoria/${slug}/${currentPage + 1}`}
-                  class="px-3 py-1 border rounded-md hover:bg-gray-200"
+                  class="px-3 py-1 border border-highlight-gold text-highlight-gold rounded-md hover:bg-gray-200"
                 >
                   Siguiente
                 </a>

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 import { urlFor } from "../utils/imageBuilder";
 import type { Post } from "../types/post";
@@ -20,13 +20,17 @@ const { post } = Astro.props;
           src={urlFor(post.mainImage).width(500).height(300).url()}
           alt={post.mainImage.alt || ""}
           transition:name={`${post.slug.current}-main-img`}
+          loading="lazy"
+          decoding="async"
         />
       ) : (
         <div class="" />
       )
     }
     <div class="p-4">
-      <h3 class="text-lg text-highlight-white font-semibold pb-4 pt-2 hover:text-highlight-red transition duration-200">
+      <h3
+        class="text-lg text-highlight-white font-semibold pb-4 pt-2 hover:text-highlight-red transition duration-200"
+      >
         {post.title}
       </h3>
       <p class="text-sm text-highlight-gold pb-2">{post.excerpt}</p>
