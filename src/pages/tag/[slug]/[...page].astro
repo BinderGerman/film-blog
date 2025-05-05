@@ -35,6 +35,7 @@ const posts = await getPostsByTagSlug(slug as string, currentPage, pageSize);
                   class="w-32 h-16"
                   src={urlFor(post.mainImage).url()}
                   alt={post.mainImage.alt || post.title}
+                  transition:name={`${post.slug.current}-main-img`}
                   loading="lazy"
                   decoding="async"
                 />
