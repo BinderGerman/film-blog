@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        serif: ['PT Serif', ...defaultTheme.fontFamily.serif],
+        sans: ['"Inter Variable"', ...defaultTheme.fontFamily.sans],
+        serif: ['"PT Serif"', ...defaultTheme.fontFamily.serif],
       },
     },
   },
